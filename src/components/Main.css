@@ -1,0 +1,9 @@
+.Content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1em;
+  text-align: center;
+  background-color: violet;
+}
