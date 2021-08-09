@@ -1,4 +1,4 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Create from "../pages/Create";
 import MyList from "../pages/MyList";
 import Favourites from "../pages/Favourites";
@@ -16,6 +16,9 @@ export default function Main() {
         </Route>
         <Route path="/favourites">
           <Favourites />
+        </Route>
+        <Route path="/">
+          <Redirect to="/create" />
         </Route>
       </Switch>
     </main>
