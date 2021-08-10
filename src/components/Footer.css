@@ -1,0 +1,14 @@
+.NavBar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+}
+
+.NavIcon {
+  height: 30px;
+}
+
+.AddIcon:active {
+  fill: #a500d2;
+}
