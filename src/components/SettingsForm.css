@@ -1,0 +1,66 @@
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  color: white;
+}
+
+.form-component {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid white;
+  height: 3em;
+}
+
+.name-field {
+  background: none;
+  border: none;
+  text-align: right;
+  color: white;
+  font-size: 1em;
+}
+
+.time-select {
+  border: none;
+  background: none;
+  align-items: right;
+  color: white;
+}
+.saveButton {
+  align-self: center;
+  border: none;
+  background-color: #009fcc;
+  color: white;
+  border-radius: 15px;
+  padding: 0.5em 2em;
+  font-weight: 600;
+  font-size: 1em;
+  margin-top: 1.5em;
+}
+
+.saveButton:hover {
+  background-color: #0087ac;
+}
+
+.phase-picker {
+  border: none;
+  background: none;
+  color: white;
+}
+.phase-picker:focus {
+  width: 200px;
+}
+
+.option {
+  background-color: white;
+  border: none;
+  text-align-last: center;
+}
+.sound-select {
+  border: none;
+  background: none;
+  text-align: right;
+  color: white;
+}
