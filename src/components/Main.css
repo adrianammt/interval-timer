@@ -1,9 +1,8 @@
 .Content {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
-  justify-content: space-around;
-  padding: 1em;
-  text-align: center;
-  background-color: violet;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgb(86, 59, 221);
+  color: white;
 }
