@@ -3,14 +3,14 @@
   display: flex;
   flex-direction: column;
   padding: 0.5em;
-  color: var(--text-onDark-color);
+  color: var(--color-text-onDark);
 }
 
 .form-component {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--text-onDark-color);
+  border-bottom: 1px solid var(--color-text-onDark);
   height: 3em;
 }
 
@@ -27,7 +27,7 @@
   background: none;
   border: none;
   text-align: right;
-  color: var(--text-onDark-color);
+  color: var(--color-text-onDark);
   font-size: 1em;
 }
 
@@ -35,13 +35,13 @@
   border: none;
   background: none;
   align-items: right;
-  color: var(--text-onDark-color);
+  color: var(--color-text-onDark);
 }
 .saveButton {
   align-self: center;
   border: none;
-  background-color: var(--accent-color);
-  color: var(--text-onDark-color);
+  background-color: var(--color-accent);
+  color: var(--color-text-onDark);
   border-radius: 15px;
   padding: 0.5em 2em;
   font-weight: 600;
@@ -51,20 +51,20 @@
 
 .saveButton:hover,
 .saveButton:active {
-  background-color: var(--accent-color-onAction);
+  background-color: var(--color-accent-onAction);
 }
 
 .phase-picker {
   border: none;
   background: none;
-  color: var(--text-onDark-color);
+  color: var(--color-text-onDark);
 }
 .phase-picker:focus {
   width: 200px;
 }
 
 .option {
-  background-color: var(--text-onDark-color);
+  background-color: var(--color-text-onDark);
   border: none;
   text-align-last: center;
 }
@@ -72,5 +72,5 @@
   border: none;
   background: none;
   text-align: right;
-  color: var(--text-onDark-color);
+  color: var(--color-text-onDark);
 }

@@ -3,6 +3,6 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: var(--primary-color);
-  color: var(--text-onDark-color);
+  background-color: var(--color-primary);
+  color: var(--color-text-onDark);
 }
