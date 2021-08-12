@@ -22,7 +22,7 @@ export default function Footer() {
       <NavLink
         to="/favourites"
         activeClassName="NavIcon--active"
-        className={"NavIcon"}
+        className="NavIcon"
       >
         <IoHeart alt="My Favourites icon" />
       </NavLink>
