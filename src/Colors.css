@@ -1,0 +1,8 @@
+:root {
+  --primary-color: #2b0080;
+  --primary-color-onAction: #76297d;
+  --accent-color: #009fcc;
+  --accent-color-onAction: #0087ac;
+  --text-onDark-color: white;
+  --text-onlight-color: var(--primary-color);
+}
