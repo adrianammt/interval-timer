@@ -12,8 +12,7 @@ export default function SettingsForm() {
     const form = event.target;
     const name = form.name.value;
     const duration = form.duration.value;
-    const phase = form.phase.value;
-    const prepTime = form.prepTime.value;
+    const prepTime = Number(form.prepTime.value);
     const intervalTime = form.intervalTime.value;
     const startSound = form.startSound.value;
     const endSound = form.endSound.value;
@@ -25,7 +24,6 @@ export default function SettingsForm() {
       id,
       name,
       duration,
-      phase,
       prepTime,
       intervalTime,
       startSound,
@@ -45,90 +43,89 @@ export default function SettingsForm() {
 
   return (
     <>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit} id="settingsForm">
         <div className="form-component">
-          <label className="input-label">Name</label>
+          <label htmlFor="name" className="input-label">
+            Name
+          </label>
           <input
             type="text"
             name="name"
             id="name"
             className="input-field name-field"
-            placeholder="Morning Meditation"
+            placeholder='"Morning Meditation"'
             required
           />
         </div>
         <div className="form-component">
-          <label className="input-label">Duration</label>
+          <label htmlFor="duration" className="input-label">
+            Duration
+          </label>
           <input
             type="time"
             name="duration"
             id="duration"
             className="time-select"
-            step="1"
             required
-            min="00:05:00"
-            max="02:00:00"
+            defaultValue="00:30"
           />
         </div>
         <div className="form-component">
-          <label className="input-label">Nr of phases</label>
-          <select className="phase-picker" name="phase" id="phase">
-            <option value="1" className="option">
-              1
-            </option>
-            <option value="3" className="option">
-              3
-            </option>
+          <label htmlFor="prepTime" className="input-label">
+            Prep Time
+          </label>
+          <select name="prepTime" id="prepTime" className="time-select">
+            <option value="10">10 sec</option>
+            <option value="15">15 sec</option>
+            <option value="20">20 sec</option>
+            <option value="30">30 sec</option>
           </select>
         </div>
         <div className="form-component">
-          <label className="input-label">Prep Time</label>
-          <input
-            type="time"
-            name="prepTime"
-            id="prepTime"
-            className="time-select"
-            step="1"
-            required
-            min="00:00:10"
-            max="00:00:20"
-          />
-        </div>
-        <div className="form-component">
-          <label className="input-label">Interval Time</label>
+          <label htmlFor="intervalTime" className="input-label">
+            Interval Time
+          </label>
           <input
             type="time"
             className="time-select"
-            step="1"
             required
             name="intervalTime"
-            id="intervalTIme"
+            id="intervalTime"
+            defaultValue="00:01"
           />
         </div>
         <div className="form-component">
-          <label className="input-label ">Start sound</label>
+          <label htmlFor="startSound" className="input-label ">
+            Start sound
+          </label>
           <select className="sound-select" name="startSound" id="startSound">
             <option value="none">None</option>
-            <option value="bell">Bell</option>
+            <option value="bell" selected>
+              Bell
+            </option>
             <option value="tibetan-bowl">Tibetan bowl</option>
             <option value="tingshas">Tingshas</option>
             <option value="cymbal">Cymbal</option>
           </select>
         </div>
         <div className="form-component">
-          <label className="input-label ">End sound</label>
+          <label htmlFor="endSound" className="input-label ">
+            End sound
+          </label>
           <select className="sound-select" name="endSound" id="endSound">
             <option value="none">None</option>
             <option value="bell">Bell</option>
             <option value="tibetan-bowl">Tibetan bowl</option>
             <option value="tingshas">Tingshas</option>
-            <option value="gong" selected="selected">
+            <option value="gong" selected>
               Gong
             </option>
           </select>
         </div>
         <div className="form-component">
-          <label className="input-label">Interval sound</label>
+          <label htmlFor="intervalSound" className="input-label">
+            Interval sound
+          </label>
           <select
             className="sound-select"
             name="intervalSound"
@@ -137,29 +134,34 @@ export default function SettingsForm() {
             <option value="none">None</option>
             <option value="bell">Bell</option>
             <option value="tibetan-bowl">Tibetan bowl</option>
-            <option value="tingshas" selected="selected">
+            <option value="tingshas" selected>
               Tingshas
             </option>
             <option value="cymbal">Cymbal</option>
           </select>
         </div>
         <div className="form-component">
-          <label className="input-label">Background music</label>
+          <label htmlFor="backgroundMusic" className="input-label">
+            Background music
+          </label>
           <select
             className="sound-select"
             name="backgroundMusic"
             id="backgroundMusic"
           >
-            <option value="none">None</option>
+            <option value="none" selected>
+              None
+            </option>
             <option value="nature">Nature</option>
             <option value="sea">Sea</option>
             <option value="rain">Rain</option>
           </select>
         </div>
-        <button type="submit" className="saveButton">
-          Save
-        </button>
       </form>
+
+      <button type="submit" className="saveButton" form="settingsForm">
+        Save
+      </button>
     </>
   );
 }

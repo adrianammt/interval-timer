@@ -3,6 +3,6 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: rgb(86, 59, 221);
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--text-onDark-color);
 }
