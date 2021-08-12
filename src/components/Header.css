@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--primary-color);
-  background-color: var(--text-onDark-color);
+  color: var(--color-primary);
+  background-color: var(--color-text-onDark);
   font-weight: 800;
 }
