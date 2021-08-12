@@ -1,3 +1,14 @@
+import { IoPlay, IoStop, IoPause } from "react-icons/io5";
+
 export default function Favourites() {
-  return <h2>Here you can save your Fabs</h2>;
+  return (
+    <>
+      <div className="container">
+        <h2>Here you will see and play your classes!</h2>
+        <IoPlay />
+        <IoStop />
+        <IoPause />
+      </div>
+    </>
+  );
 }
