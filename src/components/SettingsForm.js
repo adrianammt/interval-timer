@@ -12,8 +12,7 @@ export default function SettingsForm() {
     const form = event.target;
     const name = form.name.value;
     const duration = form.duration.value;
-
-    const prepTime = form.prepTime.value;
+    const prepTime = Number(form.prepTime.value);
     const intervalTime = form.intervalTime.value;
     const startSound = form.startSound.value;
     const endSound = form.endSound.value;
@@ -21,20 +20,11 @@ export default function SettingsForm() {
     const backgroundMusic = form.backgroundMusic.value;
     const id = uuidv4();
 
-    let prepTimeNum;
-    if (prepTime === "10 sec") {
-      prepTimeNum = 10;
-    } else if (prepTime === "15 sec") {
-      prepTimeNum = 15;
-    } else if (prepTime === "20 sec") {
-      prepTimeNum = 20;
-    } else prepTimeNum = 30;
-
     const newClassInput = {
       id,
       name,
       duration,
-      prepTimeNum,
+      prepTime,
       intervalTime,
       startSound,
       endSound,
@@ -85,10 +75,10 @@ export default function SettingsForm() {
             Prep Time
           </label>
           <select name="prepTime" id="prepTime" className="time-select">
-            <option>10 sec</option>
-            <option>15 sec</option>
-            <option>20 sec</option>
-            <option>30 sec</option>
+            <option value="10">10 sec</option>
+            <option value="15">15 sec</option>
+            <option value="20">20 sec</option>
+            <option value="30">30 sec</option>
           </select>
         </div>
         <div className="form-component">
