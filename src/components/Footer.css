@@ -2,14 +2,14 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: var(--text-onDark-color);
+  background-color: var(--color-text-onDark);
 }
 
 .NavIcon {
   font-size: 2rem;
-  color: var(--primary-color);
+  color: var(--color-primary);
 }
 
 .NavIcon--active {
-  color: var(--accent-color);
+  color: var(--color-accent);
 }
