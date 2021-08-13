@@ -2,7 +2,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0.5em;
   color: var(--color-text-onDark);
 }
 
@@ -17,6 +16,15 @@
 .form-component:focus-within {
   border-bottom: 3px solid white;
   transition: 0.3s ease-in-out;
+}
+
+.form-component__time {
+  display: flex;
+}
+.form-component__time p {
+  font-size: 0.7rem;
+  margin-left: 0.4rem;
+  align-self: center;
 }
 
 .form input {
@@ -52,15 +60,6 @@
 .saveButton:hover,
 .saveButton:active {
   background-color: var(--color-accent-onAction);
-}
-
-.phase-picker {
-  border: none;
-  background: none;
-  color: var(--color-text-onDark);
-}
-.phase-picker:focus {
-  width: 200px;
 }
 
 .option {
