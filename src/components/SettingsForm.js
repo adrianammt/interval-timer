@@ -58,9 +58,12 @@ export default function SettingsForm() {
           />
         </div>
         <div className="form-component">
-          <label htmlFor="duration" className="input-label">
-            Duration
-          </label>
+          <div className="form-component__time">
+            <label htmlFor="duration" className="input-label">
+              Duration
+            </label>
+            <p>(hh:mm)</p>
+          </div>
           <input
             type="time"
             name="duration"
@@ -82,9 +85,12 @@ export default function SettingsForm() {
           </select>
         </div>
         <div className="form-component">
-          <label htmlFor="intervalTime" className="input-label">
-            Interval Time
-          </label>
+          <div className="form-component__time">
+            <label htmlFor="intervalTime" className="input-label">
+              Interval Time
+            </label>
+            <p>(hh:mm)</p>
+          </div>
           <input
             type="time"
             className="time-select"
