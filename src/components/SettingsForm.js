@@ -58,9 +58,12 @@ export default function SettingsForm() {
           />
         </div>
         <div className="form-component">
-          <label htmlFor="duration" className="input-label">
-            Duration
-          </label>
+          <div className="form-component__time">
+            <label htmlFor="duration" className="input-label">
+              Duration
+            </label>
+            <p>(hh:mm)</p>
+          </div>
           <input
             type="time"
             name="duration"
@@ -82,9 +85,12 @@ export default function SettingsForm() {
           </select>
         </div>
         <div className="form-component">
-          <label htmlFor="intervalTime" className="input-label">
-            Interval Time
-          </label>
+          <div className="form-component__time">
+            <label htmlFor="intervalTime" className="input-label">
+              Interval Time
+            </label>
+            <p>(hh:mm)</p>
+          </div>
           <input
             type="time"
             className="time-select"
@@ -98,11 +104,14 @@ export default function SettingsForm() {
           <label htmlFor="startSound" className="input-label ">
             Start sound
           </label>
-          <select className="sound-select" name="startSound" id="startSound">
+          <select
+            className="sound-select"
+            name="startSound"
+            id="startSound"
+            defaultValue="Bell"
+          >
             <option value="none">None</option>
-            <option value="bell" selected>
-              Bell
-            </option>
+            <option value="bell">Bell</option>
             <option value="tibetan-bowl">Tibetan bowl</option>
             <option value="tingshas">Tingshas</option>
             <option value="cymbal">Cymbal</option>
@@ -117,9 +126,7 @@ export default function SettingsForm() {
             <option value="bell">Bell</option>
             <option value="tibetan-bowl">Tibetan bowl</option>
             <option value="tingshas">Tingshas</option>
-            <option value="gong" selected>
-              Gong
-            </option>
+            <option value="gong">Gong</option>
           </select>
         </div>
         <div className="form-component">
@@ -134,9 +141,7 @@ export default function SettingsForm() {
             <option value="none">None</option>
             <option value="bell">Bell</option>
             <option value="tibetan-bowl">Tibetan bowl</option>
-            <option value="tingshas" selected>
-              Tingshas
-            </option>
+            <option value="tingshas">Tingshas</option>
             <option value="cymbal">Cymbal</option>
           </select>
         </div>
@@ -149,9 +154,7 @@ export default function SettingsForm() {
             name="backgroundMusic"
             id="backgroundMusic"
           >
-            <option value="none" selected>
-              None
-            </option>
+            <option value="none">None</option>
             <option value="nature">Nature</option>
             <option value="sea">Sea</option>
             <option value="rain">Rain</option>
