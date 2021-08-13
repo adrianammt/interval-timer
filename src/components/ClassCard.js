@@ -22,5 +22,5 @@ export default function ClassCard() {
     });
   }
 
-  return <div className="ClassCard--wrapper">{renderClasses()}</div>;
+  return <div className="ClassCard__wrapper">{renderClasses()}</div>;
 }
