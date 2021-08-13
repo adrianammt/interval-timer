@@ -4,5 +4,6 @@
   --color-accent: #009fcc;
   --color-accent-onAction: #0087ac;
   --color-text-onDark: white;
+  --color-text-onDark-dim: #ffffffcf;
   --color-text-onlight: var(--color-primary);
 }
