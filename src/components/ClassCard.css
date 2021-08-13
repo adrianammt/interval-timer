@@ -1,0 +1,18 @@
+.ClassCard {
+  width: 22rem;
+  background-color: var(--color-text-onDark-dim);
+  color: var(--color-primary);
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+.ClassCard__input {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ClassCard--wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
