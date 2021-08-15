@@ -1,6 +1,7 @@
 import "./SettingsForm.css";
 import { v4 as uuidv4 } from "uuid";
 import { useState, useEffect } from "react";
+import toastSavedMessage from "../feedbackToUser/toastSavedMessage";
 
 export default function SettingsForm() {
   const savedClasses = JSON.parse(localStorage.getItem("classList")) || [];
@@ -33,6 +34,7 @@ export default function SettingsForm() {
     };
 
     setNewClass([...newClass, newClassInput]);
+    toastSavedMessage("Class succesfully saved!");
 
     form.reset();
   }

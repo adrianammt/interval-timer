@@ -3,10 +3,12 @@ import Create from "../pages/Create";
 import MyList from "../pages/MyList";
 import Favourites from "../pages/Favourites";
 import "./Main.css";
+import { ToastContainer } from "react-toast";
 
 export default function Main() {
   return (
     <main className="Content">
+      <ToastContainer delay={6000} position={"top-center"} />
       <Switch>
         <Route path="/create">
           <Create />
