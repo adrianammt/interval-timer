@@ -1,0 +1,55 @@
+.PlayClass {
+  background-color: #fffffff3;
+  color: #2b0080;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  padding: 2.5rem 1.5rem;
+  border-radius: 15px;
+  position: relative;
+}
+
+.PlayClass h2 {
+  align-self: center;
+}
+
+.PlayClass__controls {
+  display: flex;
+  justify-content: space-between;
+  font-size: 3.3rem;
+}
+
+.PrepTime__line {
+  height: 0.5rem;
+  background-color: #2b0080;
+}
+
+.PrepTime__Line--time {
+  padding-top: 0.5rem;
+  display: flex;
+  color: #2b0080;
+  justify-content: space-between;
+  font-size: 0.7rem;
+}
+
+.FavIcon {
+  font-size: 2.3rem;
+  position: absolute;
+  top: -12px;
+  right: 25px;
+  color: #009fcc;
+}
+
+.Circle {
+  border: 7px solid #2b0080;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.Circle p {
+  align-self: center;
+}
