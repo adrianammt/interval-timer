@@ -1,0 +1,53 @@
+.ClassCard__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.ClassCard {
+  background-color: #fffffff3;
+  color: #2b0080;
+  padding: 1rem;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ClassCard h2 {
+  padding-bottom: 1rem;
+}
+
+.ClassCard:active,
+.ClassCard:hover {
+  background-color: #0087ac;
+  color: #ffffff;
+  transition: all 1s ease-in-out;
+}
+
+.ClassCard__input {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.ClassCard--removeItem {
+  grid-column-start: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.ClassCard-Icon {
+  font-size: 1.8rem;
+}
+
+.ClassCard-Icon:hover,
+.ClassCard-Icon:active {
+  color: #c40808d6;
+}
