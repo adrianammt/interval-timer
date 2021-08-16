@@ -3,6 +3,7 @@ import "./ClassCard.css";
 import { IoRemoveCircle } from "react-icons/io5";
 
 export default function ClassCard({
+  id,
   name,
   duration,
   intervalTime,
@@ -17,7 +18,9 @@ export default function ClassCard({
         <div className="ClassCard--removeItem">
           <IoRemoveCircle
             className="ClassCard-Icon"
-            onClick={handleRemoveClass}
+            onClick={() => {
+              handleRemoveClass(id);
+            }}
           />
         </div>
         <p>Intervals</p>
