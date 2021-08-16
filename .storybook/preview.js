@@ -1,9 +1,9 @@
+import "../src/App.css";
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
+  backgrounds: {
+    default: "myApp",
+    values: [{ name: "myApp", value: "#2b0080" }],
   },
-}
+};
