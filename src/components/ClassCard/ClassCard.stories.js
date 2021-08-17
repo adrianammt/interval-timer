@@ -14,5 +14,7 @@ Default.args = {
   name: "Good morning Sunshine",
   duration: "00:30",
   intervalTime: "00:01",
-  isDeleted: "false",
+  onRemoveClassClick() {
+    console.log("Clicked");
+  },
 };
