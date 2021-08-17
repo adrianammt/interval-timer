@@ -53,3 +53,7 @@
 .Circle p {
   align-self: center;
 }
+
+.PlayClassCard__wrapper {
+  width: 100%;
+}
