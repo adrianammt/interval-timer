@@ -30,7 +30,7 @@ export default function MyList() {
             name={savedClass.name}
             duration={savedClass.duration}
             intervalTime={savedClass.intervalTime}
-            handleRemoveClass={handleRemoveClass}
+            onRemoveClassClick={handleRemoveClass}
           />
         );
       })}

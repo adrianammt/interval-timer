@@ -7,7 +7,7 @@ export default function ClassCard({
   name,
   duration,
   intervalTime,
-  handleRemoveClass,
+  onRemoveClassClick,
 }) {
   return (
     <section className="ClassCard">
@@ -19,7 +19,7 @@ export default function ClassCard({
           <IoRemoveCircle
             className="ClassCard-Icon"
             onClick={() => {
-              handleRemoveClass(id);
+              onRemoveClassClick(id);
             }}
           />
         </div>
