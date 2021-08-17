@@ -24,6 +24,7 @@
   background-color: #0087ac;
   color: #ffffff;
   transition: all 1s ease-in-out;
+  cursor: pointer;
 }
 
 .ClassCard__input {
