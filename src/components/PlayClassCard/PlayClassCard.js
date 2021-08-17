@@ -1,12 +1,16 @@
 import React from "react";
 import "../PlayClassCard/PlayClassCard.css";
 import { IoPlay, IoStop, IoPause, IoHeart } from "react-icons/io5";
+import { useState } from "react";
 
 export default function PlayClassCard(props) {
+  const [isFavourite, setIsFavourite] = useState("false");
+  const [isActive, setIsActive] = useState(0);
+
   const {
     name,
     isToggled,
-    isPlayed,
+    isPlaying,
     isStopped,
     isPaused,
     prepTime,
@@ -14,14 +18,54 @@ export default function PlayClassCard(props) {
     ...rest
   } = props;
 
+  const toggleHeartIcon = () => {
+    setIsFavourite(!isFavourite);
+  };
+
+  function onPauseClick() {
+    setIsActive(1);
+  }
+
+  function onPlayClick() {
+    setIsActive(2);
+  }
+
+  function onStopClick() {
+    setIsActive(3);
+  }
+
   return (
     <section className="PlayClass" {...rest}>
-      <IoHeart className="FavIcon" />
+      <IoHeart
+        className={isFavourite ? "FavIcon--inactive" : "FavIcon--active"}
+        onClick={toggleHeartIcon}
+      />
       <h2>{name}</h2>
       <div className="PlayClass__controls">
-        <IoPause />
-        <IoPlay />
-        <IoStop />
+        <IoPause
+          onClick={onPauseClick}
+          className={
+            isActive === 1
+              ? "PlayClass__controls--active"
+              : "PlayClass__controls--inActive"
+          }
+        />
+        <IoPlay
+          onClick={onPlayClick}
+          className={
+            isActive === 2
+              ? "PlayClass__controls--active"
+              : "PlayClass__controls--inActive"
+          }
+        />
+        <IoStop
+          onClick={onStopClick}
+          className={
+            isActive === 3
+              ? "PlayClass__controls--active"
+              : "PlayClass__controls--inActive"
+          }
+        />
       </div>
       <h3>Preparation Time</h3>
       <div className="PrepTime">

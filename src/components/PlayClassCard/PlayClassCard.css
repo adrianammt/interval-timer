@@ -3,7 +3,7 @@
   color: #2b0080;
   display: flex;
   flex-direction: column;
-  gap: 2.2rem;
+  gap: 1.8rem;
   padding: 2.5rem 1.5rem;
   border-radius: 15px;
   position: relative;
@@ -19,6 +19,25 @@
   font-size: 3.3rem;
 }
 
+.PlayClass__controls--inActive {
+  color: #cac9cd;
+  stroke: #2b0080;
+  stroke-width: 20;
+}
+
+.PlayClass__controls--inActive {
+  cursor: pointer;
+}
+
+.PlayClass__controls--active {
+  color: #2b0080;
+  cursor: pointer;
+}
+
+.PlayClass__controls--active:hover {
+  cursor: pointer;
+}
+
 .PrepTime__line {
   height: 0.5rem;
   background-color: #2b0080;
@@ -32,12 +51,32 @@
   font-size: 0.7rem;
 }
 
-.FavIcon {
+.FavIcon--inactive {
   font-size: 2.3rem;
   position: absolute;
   top: -12px;
   right: 25px;
+  color: #f4f6f7;
+  stroke: #009fcc;
+  stroke-width: 40;
+}
+
+.FavIcon--inactive:hover {
+  cursor: pointer;
+}
+
+.FavIcon--active {
+  font-size: 2.3rem;
+  position: absolute;
+  top: -12px;
+  right: 25px;
+  stroke: #009fcc;
+  stroke-width: 40;
   color: #009fcc;
+}
+
+.FavIcon--active:hover {
+  cursor: pointer;
 }
 
 .Circle {
