@@ -8,9 +8,7 @@ export default function NoClassMessageBox(props) {
   return (
     <div className="MessageBox">
       <h2>{message}</h2>
-      <a href="/create" className="MessageBox-Icon">
-        <IoAddCircle />
-      </a>
+      <IoAddCircle className="MessageBox-Icon" />
     </div>
   );
 }
