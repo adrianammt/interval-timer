@@ -1,6 +1,6 @@
 .PlayClass {
-  background-color: #fffffff3;
-  color: #2b0080;
+  background-color: var(--color-text-onDark-dim);
+  color: var(--color-primary);
   display: flex;
   flex-direction: column;
   gap: 1.8rem;
@@ -20,8 +20,8 @@
 }
 
 .PlayClass__controls--inActive {
-  color: #cac9cd;
-  stroke: #2b0080;
+  color: var(--color-icon-inactive);
+  stroke: var(--color-primary);
   stroke-width: 20;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .PlayClass__controls--active {
-  color: #2b0080;
+  color: var(--color-primary);
   cursor: pointer;
 }
 
@@ -40,13 +40,13 @@
 
 .PrepTime__line {
   height: 0.5rem;
-  background-color: #2b0080;
+  background-color: var(--color-primary);
 }
 
 .PrepTime__Line--time {
   padding-top: 0.5rem;
   display: flex;
-  color: #2b0080;
+  color: var(--color-primary);
   justify-content: space-between;
   font-size: 0.7rem;
 }
@@ -56,8 +56,8 @@
   position: absolute;
   top: -12px;
   right: 25px;
-  color: #f4f6f7;
-  stroke: #009fcc;
+  color: var(--color-icon-inactive);
+  stroke: var(--color-accent);
   stroke-width: 40;
 }
 
@@ -70,9 +70,9 @@
   position: absolute;
   top: -12px;
   right: 25px;
-  stroke: #009fcc;
+  stroke: var(--color-accent);
   stroke-width: 40;
-  color: #009fcc;
+  color: var(--color-accent);
 }
 
 .FavIcon--active:hover {
@@ -80,7 +80,7 @@
 }
 
 .Circle {
-  border: 7px solid #2b0080;
+  border: 7px solid var(--color-primary);
   width: 9rem;
   height: 9rem;
   border-radius: 50%;

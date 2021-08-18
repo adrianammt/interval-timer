@@ -6,8 +6,8 @@
 }
 
 .ClassCard {
-  background-color: #fffffff3;
-  color: #2b0080;
+  background-color: var(--color-text-onDark-dim);
+  color: var(--color-primary);
   padding: 1rem;
   border-radius: 15px;
   display: flex;
@@ -21,8 +21,8 @@
 
 .ClassCard:active,
 .ClassCard:hover {
-  background-color: #0087ac;
-  color: #ffffff;
+  background-color: var(--color-accent-onAction);
+  color: var(--color-text-onDark);
   transition: all 1s ease-in-out;
   cursor: pointer;
 }
@@ -50,5 +50,5 @@
 
 .ClassCard-Icon:hover,
 .ClassCard-Icon:active {
-  color: #c40808d6;
+  color: var(--color-danger);
 }
