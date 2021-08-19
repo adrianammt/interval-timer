@@ -1,0 +1,23 @@
+.MessageBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--color-text-onDark-dim);
+  color: var(--color-primary);
+  padding: 2.5rem 1.5rem;
+  border-radius: 15px;
+}
+
+.MessageBox-Icon {
+  font-size: 3.3rem;
+  color: var(--color-accent);
+}
+
+.MessageBox-Icon:hover,
+.MessageBox-Icon:active {
+  color: var(--color-accent-onAction);
+  transition: 1s ease-in-out;
+  cursor: pointer;
+}

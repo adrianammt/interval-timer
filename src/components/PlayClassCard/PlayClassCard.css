@@ -1,0 +1,98 @@
+.PlayClass {
+  background-color: var(--color-text-onDark-dim);
+  color: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  padding: 2.5rem 1.5rem;
+  border-radius: 15px;
+  position: relative;
+}
+
+.PlayClass h2 {
+  align-self: center;
+}
+
+.PlayClass__controls {
+  display: flex;
+  justify-content: space-between;
+  font-size: 3.3rem;
+}
+
+.PlayClass__controls--inActive {
+  color: var(--color-icon-inactive);
+  stroke: var(--color-primary);
+  stroke-width: 20;
+}
+
+.PlayClass__controls--inActive {
+  cursor: pointer;
+}
+
+.PlayClass__controls--active {
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.PlayClass__controls--active:hover {
+  cursor: pointer;
+}
+
+.PrepTime__line {
+  height: 0.5rem;
+  background-color: var(--color-primary);
+}
+
+.PrepTime__Line--time {
+  padding-top: 0.5rem;
+  display: flex;
+  color: var(--color-primary);
+  justify-content: space-between;
+  font-size: 0.7rem;
+}
+
+.FavIcon--inactive {
+  font-size: 2.3rem;
+  position: absolute;
+  top: -12px;
+  right: 25px;
+  color: var(--color-icon-inactive);
+  stroke: var(--color-accent);
+  stroke-width: 40;
+}
+
+.FavIcon--inactive:hover {
+  cursor: pointer;
+}
+
+.FavIcon--active {
+  font-size: 2.3rem;
+  position: absolute;
+  top: -12px;
+  right: 25px;
+  stroke: var(--color-accent);
+  stroke-width: 40;
+  color: var(--color-accent);
+}
+
+.FavIcon--active:hover {
+  cursor: pointer;
+}
+
+.Circle {
+  border: 7px solid var(--color-primary);
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.Circle p {
+  align-self: center;
+}
+
+.PlayClassCard__wrapper {
+  width: 100%;
+}

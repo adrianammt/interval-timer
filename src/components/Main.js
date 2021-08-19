@@ -8,7 +8,7 @@ import { ToastContainer } from "react-toast";
 export default function Main() {
   return (
     <main className="Content">
-      <ToastContainer delay={6000} position={"top-center"} />
+      <ToastContainer delay={3000} position={"top-center"} />
       <Switch>
         <Route path="/create">
           <Create />
