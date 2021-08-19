@@ -2,8 +2,7 @@ import React from "react";
 import "./NoClassMessageBox.css";
 import { IoAddCircle } from "react-icons/io5";
 
-export default function NoClassMessageBox(props) {
-  const { message } = props;
+export default function NoClassMessageBox({ message } ) {
 
   return (
     <div className="MessageBox">
