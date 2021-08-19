@@ -12,9 +12,9 @@ export default function ClassCard({
   return (
     <section className="ClassCard">
       <h2>{name}</h2>
-      <div className="ClassCard__input">
-        <p>Duration</p>
-        <p>{duration} min</p>
+      <div className="ClassCard__info">
+        <h3>Duration</h3>
+        <h3>{duration} min</h3>
         <div className="ClassCard--removeItem">
           <IoRemoveCircle
             className="ClassCard-Icon"
@@ -23,8 +23,8 @@ export default function ClassCard({
             }}
           />
         </div>
-        <p>Intervals</p>
-        <p>{intervalTime} min</p>
+        <h3>Intervals</h3>
+        <h3>{intervalTime} min</h3>
       </div>
     </section>
   );
