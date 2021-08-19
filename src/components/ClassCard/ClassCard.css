@@ -10,9 +10,6 @@
   color: var(--color-primary);
   padding: 1rem;
   border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
 }
 
 .ClassCard h2 {
@@ -30,8 +27,6 @@
 .ClassCard__input {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
   gap: 0.5rem;
 }
 
