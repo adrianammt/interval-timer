@@ -20,11 +20,11 @@
 .ClassCard:hover {
   background-color: var(--color-accent-onAction);
   color: var(--color-text-onDark);
-  transition: all 1s ease-in-out;
+  transition: all 0.5s ease-in-out;
   cursor: pointer;
 }
 
-.ClassCard__input {
+.ClassCard__info {
   width: 100%;
   display: grid;
   gap: 0.5rem;
