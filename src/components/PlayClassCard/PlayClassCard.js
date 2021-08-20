@@ -3,19 +3,13 @@ import "../PlayClassCard/PlayClassCard.css";
 import { IoPlay, IoStop, IoPause, IoHeart } from "react-icons/io5";
 import { useState } from "react";
 
-export default function PlayClassCard({
-  id,
-  name,
-  prepTime,
-  duration,
-  intervalTime,
-}) {
-  const [isFavourite, setIsFavourite] = useState("false");
+export default function PlayClassCard({ classToPlay, toggleFavourite }) {
   const [isActive, setIsActive] = useState(0);
+  const { id, name, prepTime, duration, isFavourite } = classToPlay;
 
-  const toggleHeartIcon = () => {
-    setIsFavourite(!isFavourite);
-  };
+  function toggleHeartIcon() {
+    toggleFavourite(id);
+  }
 
   function onPauseClick() {
     setIsActive(1);
@@ -32,7 +26,7 @@ export default function PlayClassCard({
   return (
     <section className="PlayClass">
       <IoHeart
-        className={isFavourite ? "FavIcon--inactive" : "FavIcon--active"}
+        className={isFavourite ? "FavIcon--active" : "FavIcon--inactive"}
         onClick={toggleHeartIcon}
       />
       <h2>{name}</h2>
@@ -67,7 +61,7 @@ export default function PlayClassCard({
         <div className="PrepTime__line"></div>
         <div className="PrepTime__Line--time">
           <p>0</p>
-          <p>{prepTime}</p>
+          <p>{prepTime} sec</p>
         </div>
       </div>
       <h3>Class</h3>
