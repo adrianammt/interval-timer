@@ -3,20 +3,22 @@
   color: var(--color-primary);
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
+  gap: 1.4rem;
   padding: 2.5rem 1.5rem;
   border-radius: 15px;
   position: relative;
+  width: 100%;
 }
 
 .PlayClass h2 {
   align-self: center;
+  font-weight: 600;
 }
 
 .PlayClass__controls {
   display: flex;
   justify-content: space-between;
-  font-size: 3.3rem;
+  font-size: 3.8rem;
 }
 
 .PlayClass__controls--inActive {
@@ -49,6 +51,10 @@
   color: var(--color-primary);
   justify-content: space-between;
   font-size: 0.7rem;
+}
+
+.PrepTime__Line--time p {
+  font-size: 1rem;
 }
 
 .FavIcon--inactive {
