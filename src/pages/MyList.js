@@ -1,8 +1,11 @@
 import ClassCard from "../components/ClassCard/ClassCard";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import "./MyList.css";
 
 export default function MyList() {
   const [savedClasses, setSavedClasses] = useState([]);
+  const history = useHistory();
 
   function handleRemoveClass(id) {
     const newSavedClasses = savedClasses.filter(
@@ -20,6 +23,11 @@ export default function MyList() {
     localStorage.setItem("classList", JSON.stringify(savedClasses));
   }, [savedClasses]);
 
+  function handlePlayClass(id) {
+    history.push(`/myList/${id}`);
+    console.log("click");
+  }
+
   return (
     <div className="ClassCard__wrapper">
       {savedClasses.map((savedClass) => {
@@ -31,6 +39,7 @@ export default function MyList() {
             duration={savedClass.duration}
             intervalTime={savedClass.intervalTime}
             onRemoveClassClick={handleRemoveClass}
+            onPlayClassClick={handlePlayClass}
           />
         );
       })}
