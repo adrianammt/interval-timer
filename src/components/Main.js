@@ -6,19 +6,24 @@ import PlayClass from "../pages/PlayClass";
 import "./Main.css";
 import { ToastContainer } from "react-toast";
 
-export default function Main() {
+export default function Main({
+  onSaveFormInput,
+  listOfClasses,
+  onRemoveClassClick,
+  toggleFavourite,
+}) {
   return (
     <main className="Content">
       <ToastContainer delay={3000} position={"top-center"} />
       <Switch>
         <Route path="/myList/:id">
-          <PlayClass />
+          <PlayClass data={listOfClasses} toggleFavourite={toggleFavourite} />
         </Route>
         <Route path="/create">
-          <Create />
+          <Create onSaveFormInput={onSaveFormInput} />
         </Route>
         <Route path="/myList">
-          <MyList />
+          <MyList data={listOfClasses} handleRemoveClass={onRemoveClassClick} />
         </Route>
         <Route path="/favourites">
           <Favourites />
