@@ -1,47 +1,34 @@
 import ClassCard from "../components/ClassCard/ClassCard";
-import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import NoClassMessageBox from "../components/NoClassBox/NoClassMessageBox";
 
-export default function MyList() {
-  const [savedClasses, setSavedClasses] = useState([]);
+export default function MyList({ data, handleRemoveClass }) {
   const history = useHistory();
-
-  function handleRemoveClass(id) {
-    const newSavedClasses = savedClasses.filter(
-      (savedClass) => savedClass.id !== id
-    );
-    setSavedClasses(newSavedClasses);
-  }
-
-  useEffect(() => {
-    const savedClasses = JSON.parse(localStorage.getItem("classList")) || [];
-    setSavedClasses(savedClasses);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("classList", JSON.stringify(savedClasses));
-  }, [savedClasses]);
 
   function handlePlayClass(id) {
     history.push(`/myList/${id}`);
-    console.log("click");
   }
 
   return (
     <div className="ClassCard__wrapper">
-      {savedClasses.map((savedClass) => {
-        return (
-          <ClassCard
-            key={savedClass.id}
-            id={savedClass.id}
-            name={savedClass.name}
-            duration={savedClass.duration}
-            intervalTime={savedClass.intervalTime}
-            onRemoveClassClick={handleRemoveClass}
-            onPlayClassClick={handlePlayClass}
-          />
-        );
-      })}
+      {data.length === 0 ? (
+        <NoClassMessageBox />
+      ) : (
+        data.map((savedClass) => {
+          return (
+            <ClassCard
+              classCard={savedClass}
+              key={savedClass.id}
+              id={savedClass.id}
+              name={savedClass.name}
+              duration={savedClass.duration}
+              intervalTime={savedClass.intervalTime}
+              onRemoveClassClick={handleRemoveClass}
+              onPlayClassClick={handlePlayClass}
+            />
+          );
+        })
+      )}
     </div>
   );
 }
