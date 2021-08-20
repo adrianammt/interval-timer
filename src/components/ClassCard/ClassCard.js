@@ -8,9 +8,15 @@ export default function ClassCard({
   duration,
   intervalTime,
   onRemoveClassClick,
+  onPlayClassClick,
 }) {
   return (
-    <section className="ClassCard">
+    <section
+      className="ClassCard"
+      onClick={() => {
+        onPlayClassClick(id);
+      }}
+    >
       <h2>{name}</h2>
       <div className="ClassCard__info">
         <h3>Duration</h3>
@@ -18,7 +24,8 @@ export default function ClassCard({
         <div className="ClassCard--removeItem">
           <IoRemoveCircle
             className="ClassCard-Icon"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               onRemoveClassClick(id);
             }}
           />
