@@ -1,7 +1,6 @@
 import ClassCard from "../components/ClassCard/ClassCard";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import "./MyList.css";
 
 export default function MyList() {
   const [savedClasses, setSavedClasses] = useState([]);
