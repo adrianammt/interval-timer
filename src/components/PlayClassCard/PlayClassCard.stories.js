@@ -15,7 +15,6 @@ Default.args = {
   duration: "00:30",
   intervaltime: "00:01",
   prepTime: "10 sec",
-  isPlaying: false,
   isStopped: false,
   isPaused: false,
   isToggled: false,
