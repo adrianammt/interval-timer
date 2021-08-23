@@ -6,7 +6,7 @@ import { useTimer } from "react-use-precision-timer";
 import tibetanBowl from "../../assets/tibetanBowl.wav";
 import bellChime from "../../assets/bellChime.wav";
 import bigSingingBowl from "../../assets/bigSingingBowl.wav";
-import nature from "../../assets/nature.flac";
+import oceanWaves from "../../assets/oceanWaves.wav";
 
 export default function PlayClassCard({ classToPlay, toggleFavourite }) {
   const [isActive, setIsActive] = useState(0);
@@ -21,7 +21,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
   const [formattedTime, setFormattedTime] = useState("00:00:00");
 
   const tibetanBowlRef = useRef();
-  const natureRef = useRef();
+  const oceanRef = useRef();
   const bellChimeRef = useRef();
   const bigSingingBowlRef = useRef();
 
@@ -43,8 +43,8 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
       if (mainTimer.isRunning()) {
         setFormattedTime(getFormattedTime());
 
-        if (natureRef.current.paused) {
-          natureRef.current.play();
+        if (oceanRef.current.paused) {
+          oceanRef.current.play();
         }
       }
 
@@ -54,7 +54,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
 
       if (getTime().total >= duration) {
         mainTimer.stop();
-        natureRef.current.pause();
+        oceanRef.current.pause();
         bigSingingBowlRef.current.play();
       }
     },
@@ -81,7 +81,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
       setIsActive(1);
       mainTimer.pause();
       intervalTimer.pause();
-      natureRef.current.pause();
+      oceanRef.current.pause();
     }
   }
 
@@ -104,7 +104,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     setIsActive(3);
     mainTimer.stop();
     intervalTimer.stop();
-    natureRef.current.pause();
+    oceanRef.current.pause();
     setFormattedTime("00:00:00");
   }
 
@@ -176,7 +176,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
         <p>{formattedTime}</p>
       </div>
       <audio ref={tibetanBowlRef} preload="true" src={tibetanBowl} />
-      <audio ref={natureRef} preload="true" src={nature} />
+      <audio ref={oceanRef} preload="true" src={oceanWaves} />
       <audio ref={bellChimeRef} preload="true" src={bellChime} />
       <audio ref={bigSingingBowlRef} preload="true" src={bigSingingBowl} />
     </section>
