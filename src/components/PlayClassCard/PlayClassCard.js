@@ -3,10 +3,10 @@ import "./PlayClassCard.css";
 import { IoPlay, IoStop, IoPause, IoHeart } from "react-icons/io5";
 import { useState, useRef } from "react";
 import { useTimer } from "react-use-precision-timer";
-import tibetanBowl from "../../assets/tibetanBowl.wav";
-import bellChime from "../../assets/bellChime.wav";
-import bigSingingBowl from "../../assets/bigSingingBowl.wav";
-import oceanWaves from "../../assets/oceanWaves.wav";
+import tibetanBowl from "../../assets/tibetanBowl.mp3";
+import bellChime from "../../assets/bellChime.mp3";
+import bigSingingBowl from "../../assets/bigSingingBowl.mp3";
+import oceanWaves from "../../assets/oceanWaves.mp3";
 
 export default function PlayClassCard({ classToPlay, toggleFavourite }) {
   const [isActive, setIsActive] = useState(0);
