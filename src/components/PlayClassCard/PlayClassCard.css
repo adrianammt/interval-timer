@@ -27,13 +27,8 @@
   stroke-width: 20;
 }
 
-.PlayClass__controls--inActive {
-  cursor: pointer;
-}
-
 .PlayClass__controls--active {
   color: var(--color-primary);
-  cursor: pointer;
 }
 
 .PlayClass__controls--active:hover {

@@ -9,7 +9,6 @@ import bigSingingBowl from "../../assets/bigSingingBowl.mp3";
 import oceanWaves from "../../assets/oceanWaves.mp3";
 
 export default function PlayClassCard({ classToPlay, toggleFavourite }) {
-  const [isActive, setIsActive] = useState(0);
   const {
     id,
     name,
@@ -78,7 +77,6 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     if (prepTimer.isRunning()) {
       prepTimer.pause();
     } else {
-      setIsActive(1);
       mainTimer.pause();
       intervalTimer.pause();
       oceanRef.current.pause();
@@ -86,7 +84,6 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
   }
 
   function onPlayClick() {
-    setIsActive(2);
     if (!mainTimer.isStarted()) {
       prepTimer.start();
     }
@@ -101,7 +98,6 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
   }
 
   function onStopClick() {
-    setIsActive(3);
     prepTimer.stop();
     mainTimer.stop();
     intervalTimer.stop();
@@ -142,7 +138,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
         <IoPause
           onClick={onPauseClick}
           className={
-            isActive === 1
+            mainTimer.isPaused() || prepTimer.isPaused()
               ? "PlayClass__controls--active"
               : "PlayClass__controls--inActive"
           }
@@ -150,7 +146,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
         <IoPlay
           onClick={onPlayClick}
           className={
-            isActive === 2
+            mainTimer.isRunning() || prepTimer.isRunning()
               ? "PlayClass__controls--active"
               : "PlayClass__controls--inActive"
           }
@@ -158,7 +154,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
         <IoStop
           onClick={onStopClick}
           className={
-            isActive === 3
+            mainTimer.isStopped() && prepTimer.isStopped()
               ? "PlayClass__controls--active"
               : "PlayClass__controls--inActive"
           }
@@ -177,7 +173,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
         <p>{formattedTime}</p>
       </div>
       <audio ref={tibetanBowlRef} preload="true" src={tibetanBowl} />
-      <audio ref={oceanRef} preload="true" src={oceanWaves} />
+      <audio ref={oceanRef} preload="true" loop={true} src={oceanWaves} />
       <audio ref={bellChimeRef} preload="true" src={bellChime} />
       <audio ref={bigSingingBowlRef} preload="true" src={bigSingingBowl} />
     </section>
