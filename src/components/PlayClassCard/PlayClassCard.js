@@ -7,6 +7,8 @@ import tibetanBowl from "../../assets/tibetanBowl.mp3";
 import bellChime from "../../assets/bellChime.mp3";
 import bigSingingBowl from "../../assets/bigSingingBowl.mp3";
 import oceanWaves from "../../assets/oceanWaves.mp3";
+import forest from "../../assets/forest.mp3";
+import windbell from "../../assets/windbell.mp3";
 
 export default function PlayClassCard({ classToPlay, toggleFavourite }) {
   const {
@@ -15,14 +17,18 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     prepTime,
     duration,
     intervalTime,
+    startSound,
+    endSound,
+    intervalSound,
+    backgroundMusic,
     isFavourite,
   } = classToPlay;
   const [formattedTime, setFormattedTime] = useState("00:00:00");
 
-  const tibetanBowlRef = useRef();
-  const oceanRef = useRef();
-  const bellChimeRef = useRef();
-  const bigSingingBowlRef = useRef();
+  const startSoundRef = useRef();
+  const endSoundRef = useRef();
+  const intervalSoundRef = useRef();
+  const backgroundMusicRef = useRef();
 
   const prepTimer = useTimer({
     delay: prepTime * 1000,
@@ -30,7 +36,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     callback() {
       mainTimer.start();
       intervalTimer.start();
-      bellChimeRef.current.play();
+      startSoundRef.current.play();
     },
   });
 
@@ -42,8 +48,8 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
       if (mainTimer.isRunning()) {
         setFormattedTime(getFormattedTime());
 
-        if (oceanRef.current.paused) {
-          oceanRef.current.play();
+        if (backgroundMusicRef.current.paused) {
+          backgroundMusicRef.current.play();
         }
       }
 
@@ -53,8 +59,8 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
 
       if (getTime().total >= duration) {
         mainTimer.stop();
-        oceanRef.current.pause();
-        bigSingingBowlRef.current.play();
+        backgroundMusicRef.current.pause();
+        endSoundRef.current.play();
       }
     },
   });
@@ -64,7 +70,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     delay: intervalTime * 1000,
     callback() {
       if (intervalTimer.isRunning()) {
-        tibetanBowlRef.current.play();
+        intervalSoundRef.current.play();
       }
     },
   });
@@ -79,7 +85,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     } else {
       mainTimer.pause();
       intervalTimer.pause();
-      oceanRef.current.pause();
+      backgroundMusicRef.current.pause();
     }
   }
 
@@ -101,7 +107,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     prepTimer.stop();
     mainTimer.stop();
     intervalTimer.stop();
-    oceanRef.current.pause();
+    backgroundMusicRef.current.pause();
     setFormattedTime("00:00:00");
   }
 
@@ -125,6 +131,66 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     const minsString = time.minutes.toString().padStart(2, "00");
     const secondsString = time.seconds.toString().padStart(2, "00");
     return `${hoursString}:${minsString}:${secondsString}`;
+  }
+
+  function startingSound() {
+    if (startSound === "bell") {
+      return bellChime;
+    } else if (startSound === "bowl") {
+      return tibetanBowl;
+    } else if (startSound === "bigBowl") {
+      return bigSingingBowl;
+    } else return windbell;
+  }
+
+  function startMuted() {
+    if (startSound === "none") {
+      return true;
+    } else return false;
+  }
+
+  function endingSound() {
+    if (endSound === "bell") {
+      return bellChime;
+    } else if (endSound === "bowl") {
+      return tibetanBowl;
+    } else if (endSound === "bigBowl") {
+      return bigSingingBowl;
+    } else return windbell;
+  }
+
+  function endMuted() {
+    if (endSound === "none") {
+      return true;
+    } else return false;
+  }
+
+  function intervalsSound() {
+    if (intervalSound === "bell") {
+      return bellChime;
+    } else if (intervalSound === "bowl") {
+      return tibetanBowl;
+    } else if (intervalSound === "bigBowl") {
+      return bigSingingBowl;
+    } else return windbell;
+  }
+
+  function intervalMuted() {
+    if (intervalSound === "none") {
+      return true;
+    } else return false;
+  }
+
+  function backgroundSound() {
+    if (backgroundMusic === "waves") {
+      return oceanWaves;
+    } else return forest;
+  }
+
+  function backgroundMuted() {
+    if (backgroundMusic === "none") {
+      return true;
+    } else return false;
   }
 
   return (
@@ -172,10 +238,31 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
       <div className="Circle">
         <p>{formattedTime}</p>
       </div>
-      <audio ref={tibetanBowlRef} preload="true" src={tibetanBowl} />
-      <audio ref={oceanRef} preload="true" loop={true} src={oceanWaves} />
-      <audio ref={bellChimeRef} preload="true" src={bellChime} />
-      <audio ref={bigSingingBowlRef} preload="true" src={bigSingingBowl} />
+      <audio
+        ref={startSoundRef}
+        preload="true"
+        src={startingSound()}
+        muted={startMuted()}
+      />
+      <audio
+        ref={endSoundRef}
+        preload="true"
+        src={endingSound()}
+        muted={endMuted()}
+      />
+      <audio
+        ref={intervalSoundRef}
+        preload="true"
+        src={intervalsSound()}
+        muted={intervalMuted()}
+      />
+      <audio
+        ref={backgroundMusicRef}
+        preload="true"
+        loop={true}
+        src={backgroundSound()}
+        muted={backgroundMuted()}
+      />
     </section>
   );
 }
