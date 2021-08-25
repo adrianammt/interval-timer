@@ -115,9 +115,9 @@ export default function SettingsForm({ onSaveFormInput }) {
           >
             <option value="none">None</option>
             <option value="bell">Bell</option>
-            <option value="tibetan-bowl">Tibetan bowl</option>
-            <option value="tingshas">Tingshas</option>
-            <option value="cymbal">Cymbal</option>
+            <option value="bowl">Bowl</option>
+            <option value="bigBowl">Big Bowl</option>
+            <option value="windbell">Windbell</option>
           </select>
         </div>
         <div className="form-component">
@@ -127,9 +127,9 @@ export default function SettingsForm({ onSaveFormInput }) {
           <select className="sound-select" name="endSound" id="endSound">
             <option value="none">None</option>
             <option value="bell">Bell</option>
-            <option value="tibetan-bowl">Tibetan bowl</option>
-            <option value="tingshas">Tingshas</option>
-            <option value="gong">Gong</option>
+            <option value="bowl">Bowl</option>
+            <option value="bigBowl">Big Bowl</option>
+            <option value="windbell">Windbell</option>
           </select>
         </div>
         <div className="form-component">
@@ -143,9 +143,9 @@ export default function SettingsForm({ onSaveFormInput }) {
           >
             <option value="none">None</option>
             <option value="bell">Bell</option>
-            <option value="tibetan-bowl">Tibetan bowl</option>
-            <option value="tingshas">Tingshas</option>
-            <option value="cymbal">Cymbal</option>
+            <option value="bowl">Bowl</option>
+            <option value="bigBowl">Big Bowl</option>
+            <option value="windbell">Windbell</option>
           </select>
         </div>
         <div className="form-component">
@@ -158,9 +158,8 @@ export default function SettingsForm({ onSaveFormInput }) {
             id="backgroundMusic"
           >
             <option value="none">None</option>
-            <option value="nature">Nature</option>
-            <option value="sea">Sea</option>
-            <option value="rain">Rain</option>
+            <option value="waves">Waves</option>
+            <option value="forest">Forest</option>
           </select>
         </div>
       </form>
