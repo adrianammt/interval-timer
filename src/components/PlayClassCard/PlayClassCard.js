@@ -102,6 +102,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
 
   function onStopClick() {
     setIsActive(3);
+    prepTimer.stop();
     mainTimer.stop();
     intervalTimer.stop();
     oceanRef.current.pause();
