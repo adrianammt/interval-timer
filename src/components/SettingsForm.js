@@ -7,9 +7,17 @@ export default function SettingsForm({ onSaveFormInput }) {
 
     const form = event.target;
     const name = form.name.value;
-    const duration = form.duration.value;
+
+    const durationInput = form.durationInput.value;
+    const tHours = durationInput.split(":")[0];
+    const tMinutes = durationInput.split(":")[1];
+    const duration = Number(tHours) * 3600 + Number(tMinutes) * 60;
+
     const prepTime = Number(form.prepTime.value);
-    const intervalTime = form.intervalTime.value;
+    const intervalTimeInput = form.intervalTimeInput.value;
+    const iHours = intervalTimeInput.split(":")[0];
+    const iMinutes = intervalTimeInput.split(":")[1];
+    const intervalTime = Number(iHours) * 3600 + Number(iMinutes) * 60;
     const startSound = form.startSound.value;
     const endSound = form.endSound.value;
     const intervalSound = form.intervalSound.value;
@@ -20,6 +28,8 @@ export default function SettingsForm({ onSaveFormInput }) {
       id,
       name,
       duration,
+      tHours,
+      tMinutes,
       prepTime,
       intervalTime,
       startSound,
@@ -52,15 +62,15 @@ export default function SettingsForm({ onSaveFormInput }) {
         </div>
         <div className="form-component">
           <div className="form-component__time">
-            <label htmlFor="duration" className="input-label">
+            <label htmlFor="durationInput" className="input-label">
               Duration
             </label>
             <p>(hh:mm)</p>
           </div>
           <input
             type="time"
-            name="duration"
-            id="duration"
+            name="durationInput"
+            id="durationInput"
             className="time-select"
             required
             defaultValue="00:30"
@@ -71,15 +81,15 @@ export default function SettingsForm({ onSaveFormInput }) {
             Prep Time
           </label>
           <select name="prepTime" id="prepTime" className="time-select">
+            <option value="05">05 sec</option>
             <option value="10">10 sec</option>
             <option value="15">15 sec</option>
             <option value="20">20 sec</option>
-            <option value="30">30 sec</option>
           </select>
         </div>
         <div className="form-component">
           <div className="form-component__time">
-            <label htmlFor="intervalTime" className="input-label">
+            <label htmlFor="intervalTimeInput" className="input-label">
               Interval Time
             </label>
             <p>(hh:mm)</p>
@@ -88,8 +98,8 @@ export default function SettingsForm({ onSaveFormInput }) {
             type="time"
             className="time-select"
             required
-            name="intervalTime"
-            id="intervalTime"
+            name="intervalTimeInput"
+            id="intervalTimeInput"
             defaultValue="00:01"
           />
         </div>
