@@ -133,50 +133,18 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     return `${hoursString}:${minsString}:${secondsString}`;
   }
 
-  function startingSound() {
-    if (startSound === "bell") {
+  function getSound(chosenSound) {
+    if (chosenSound === "bell") {
       return bellChime;
-    } else if (startSound === "bowl") {
+    } else if (chosenSound === "bowl") {
       return tibetanBowl;
-    } else if (startSound === "bigBowl") {
+    } else if (chosenSound === "bigBowl") {
       return bigSingingBowl;
     } else return windbell;
   }
 
-  function startMuted() {
-    if (startSound === "none") {
-      return true;
-    } else return false;
-  }
-
-  function endingSound() {
-    if (endSound === "bell") {
-      return bellChime;
-    } else if (endSound === "bowl") {
-      return tibetanBowl;
-    } else if (endSound === "bigBowl") {
-      return bigSingingBowl;
-    } else return windbell;
-  }
-
-  function endMuted() {
-    if (endSound === "none") {
-      return true;
-    } else return false;
-  }
-
-  function intervalsSound() {
-    if (intervalSound === "bell") {
-      return bellChime;
-    } else if (intervalSound === "bowl") {
-      return tibetanBowl;
-    } else if (intervalSound === "bigBowl") {
-      return bigSingingBowl;
-    } else return windbell;
-  }
-
-  function intervalMuted() {
-    if (intervalSound === "none") {
+  function isMuted(chosenSound) {
+    if (chosenSound === "none") {
       return true;
     } else return false;
   }
@@ -185,12 +153,6 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     if (backgroundMusic === "waves") {
       return oceanWaves;
     } else return forest;
-  }
-
-  function backgroundMuted() {
-    if (backgroundMusic === "none") {
-      return true;
-    } else return false;
   }
 
   return (
@@ -241,27 +203,27 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
       <audio
         ref={startSoundRef}
         preload="true"
-        src={startingSound()}
-        muted={startMuted()}
+        src={getSound(startSound)}
+        muted={isMuted(startSound)}
       />
       <audio
         ref={endSoundRef}
         preload="true"
-        src={endingSound()}
-        muted={endMuted()}
+        src={getSound(endSound)}
+        muted={isMuted(endSound)}
       />
       <audio
         ref={intervalSoundRef}
         preload="true"
-        src={intervalsSound()}
-        muted={intervalMuted()}
+        src={getSound(intervalSound)}
+        muted={isMuted(intervalSound)}
       />
       <audio
         ref={backgroundMusicRef}
         preload="true"
         loop={true}
         src={backgroundSound()}
-        muted={backgroundMuted()}
+        muted={isMuted(backgroundMusic)}
       />
     </section>
   );
