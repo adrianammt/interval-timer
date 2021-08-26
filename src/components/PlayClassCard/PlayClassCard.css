@@ -35,12 +35,12 @@
   cursor: pointer;
 }
 
-.PrepTime__line {
+.PrepTime-line {
   height: 0.5rem;
   background-color: var(--color-primary);
 }
 
-.PrepTime__Line--time {
+.PrepTime-line__time {
   padding-top: 0.5rem;
   display: flex;
   color: var(--color-primary);
@@ -48,7 +48,7 @@
   font-size: 0.7rem;
 }
 
-.PrepTime__Line--time p {
+.PrepTime-line__time--text {
   font-size: 1rem;
 }
 
@@ -80,18 +80,15 @@
   cursor: pointer;
 }
 
-.Circle {
-  border: 7px solid var(--color-primary);
-  width: 9rem;
-  height: 9rem;
-  border-radius: 50%;
+.Circle-wrapper {
   display: flex;
   justify-content: center;
   align-self: center;
 }
 
-.Circle p {
+.Circle-wrapper__text {
   align-self: center;
+  font-size: 1.4rem;
 }
 
 .PlayClassCard__wrapper {

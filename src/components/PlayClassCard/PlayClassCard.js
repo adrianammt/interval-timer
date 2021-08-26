@@ -9,6 +9,7 @@ import bigSingingBowl from "../../assets/bigSingingBowl.mp3";
 import oceanWaves from "../../assets/oceanWaves.mp3";
 import forest from "../../assets/forest.mp3";
 import windbell from "../../assets/windbell.mp3";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
 export default function PlayClassCard({ classToPlay, toggleFavourite }) {
   const {
@@ -24,6 +25,8 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     isFavourite,
   } = classToPlay;
   const [formattedTime, setFormattedTime] = useState("00:00:00");
+  const [prepFormattedTime, setPrepFormattedTime] = useState("00");
+  const [resetAnimation, setResetAnimation] = useState(0);
 
   const startSoundRef = useRef();
   const endSoundRef = useRef();
@@ -31,12 +34,16 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
   const backgroundMusicRef = useRef();
 
   const prepTimer = useTimer({
-    delay: prepTime * 1000,
-    runOnce: true,
+    fireImmediately: true,
+    delay: 1000,
     callback() {
-      mainTimer.start();
-      intervalTimer.start();
-      startSoundRef.current.play();
+      setPrepFormattedTime(getPrepFormattedTime());
+      if (getPrepTime().total >= prepTime) {
+        prepTimer.stop();
+        mainTimer.start();
+        intervalTimer.start();
+        startSoundRef.current.play();
+      }
     },
   });
 
@@ -109,6 +116,24 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     intervalTimer.stop();
     backgroundMusicRef.current.pause();
     setFormattedTime("00:00:00");
+    setResetAnimation((prevAnim) => prevAnim + 1);
+  }
+
+  function getPrepTime() {
+    const time = prepTimer.getElapsedRunningTime();
+    const total = Number.parseInt(time / 1000, 10);
+    const seconds = Number.parseInt(total % 60, 10);
+
+    return {
+      total,
+      seconds,
+    };
+  }
+
+  function getPrepFormattedTime() {
+    const { seconds } = getPrepTime();
+    const secondsString = seconds.toString().padStart(2, "00");
+    return `${secondsString}`;
   }
 
   function getTime() {
@@ -184,15 +209,24 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
       </div>
       <h3>Preparation Time</h3>
       <div className="PrepTime">
-        <div className="PrepTime__line"></div>
-        <div className="PrepTime__Line--time">
-          <p>0</p>
-          <p>{prepTime} sec</p>
+        <div className="PrepTime-line"></div>
+        <div className="PrepTime-line__time">
+          <p className="PrepTime-line__time--text">0</p>
+          <p className="PrepTime-line__time--text">
+            {prepTime} sec ({prepFormattedTime})
+          </p>
         </div>
       </div>
       <h3>Class</h3>
-      <div className="Circle">
-        <p>{formattedTime}</p>
+      <div className="Circle-wrapper">
+        <CountdownCircleTimer
+          key={resetAnimation}
+          isPlaying={mainTimer.isRunning()}
+          duration={duration}
+          colors={[["#2b0080", 0.8], ["#2b0080", 0.8], ["#A30000"]]}
+        >
+          <p className="Circle-wrapper__text">{formattedTime}</p>
+        </CountdownCircleTimer>
       </div>
       <audio
         ref={startSoundRef}
