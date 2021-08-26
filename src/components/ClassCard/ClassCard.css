@@ -60,21 +60,6 @@
   grid-row-end: 4;
 }
 
-.ClassCard__info {
-  width: 100%;
-  display: grid;
-  gap: 0.5rem;
-}
-
-.ClassCard--removeItem {
-  grid-column-start: 3;
-  grid-row-start: 1;
-  grid-row-end: 3;
-  display: flex;
-  justify-content: right;
-  align-items: flex-end;
-}
-
 .ClassCard-removeIcon {
   font-size: 2.3rem;
   position: absolute;
