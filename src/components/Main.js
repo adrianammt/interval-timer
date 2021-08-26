@@ -23,10 +23,18 @@ export default function Main({
           <Create onSaveFormInput={onSaveFormInput} />
         </Route>
         <Route path="/myList">
-          <MyList data={listOfClasses} handleRemoveClass={onRemoveClassClick} />
+          <MyList
+            data={listOfClasses}
+            handleRemoveClass={onRemoveClassClick}
+            toggleFavourite={toggleFavourite}
+          />
         </Route>
         <Route path="/favourites">
-          <Favourites />
+          <Favourites
+            data={listOfClasses}
+            handleRemoveClass={onRemoveClassClick}
+            toggleFavourite={toggleFavourite}
+          />
         </Route>
         <Route path="/">
           <Redirect to="/myList" />
