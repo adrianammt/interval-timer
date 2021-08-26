@@ -79,7 +79,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     toggleFavourite(id);
   }
 
-  function onPauseClick() {
+  function handlePauseClick() {
     if (prepTimer.isRunning()) {
       prepTimer.pause();
     } else {
@@ -89,7 +89,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     }
   }
 
-  function onPlayClick() {
+  function handlePlayClick() {
     if (!mainTimer.isStarted()) {
       prepTimer.start();
     }
@@ -103,7 +103,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     }
   }
 
-  function onStopClick() {
+  function handleStopClick() {
     prepTimer.stop();
     mainTimer.stop();
     intervalTimer.stop();
@@ -164,7 +164,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
       <h2>{name}</h2>
       <div className="PlayClass__controls">
         <IoPause
-          onClick={onPauseClick}
+          onClick={handlePauseClick}
           className={
             mainTimer.isPaused() || prepTimer.isPaused()
               ? "PlayClass__controls--active"
@@ -172,7 +172,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
           }
         />
         <IoPlay
-          onClick={onPlayClick}
+          onClick={handlePlayClick}
           className={
             mainTimer.isRunning() || prepTimer.isRunning()
               ? "PlayClass__controls--active"
@@ -180,7 +180,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
           }
         />
         <IoStop
-          onClick={onStopClick}
+          onClick={handleStopClick}
           className={
             mainTimer.isStopped() && prepTimer.isStopped()
               ? "PlayClass__controls--active"
