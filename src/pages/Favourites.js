@@ -1,11 +1,32 @@
 import "./Favourites.css";
+import ClassCard from "../components/ClassCard/ClassCard";
+import { useHistory } from "react-router-dom";
 
-export default function Favourites() {
+export default function Favourites({ data, handleRemoveClass }) {
+  const history = useHistory();
+
+  function handlePlayClass(id) {
+    history.push(`/myList/${id}`);
+  }
+
   return (
-    <>
-      <div className="container">
-        <h2>Here you will see and play your favourite classes!</h2>
-      </div>
-    </>
+    <div className="ClassCard__wrapper">
+      {data
+        .filter((savedClass) => savedClass.isFavourite)
+        .map((filteredClass) => {
+          return (
+            <ClassCard
+              classCard={filteredClass}
+              key={filteredClass.id}
+              id={filteredClass.id}
+              name={filteredClass.name}
+              duration={filteredClass.duration}
+              intervalTime={filteredClass.intervalTime}
+              onRemoveClassClick={handleRemoveClass}
+              onPlayClassClick={handlePlayClass}
+            />
+          );
+        })}
+    </div>
   );
 }
