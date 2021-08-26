@@ -35,7 +35,7 @@ export default function ClassCard({
         }
         onClick={handleToogleHeartOnClick}
       />
-      <h2>{classCard.name}</h2>
+      <h2 className="ClassCard__title">{classCard.name}</h2>
       <div className="ClassCard__info">
         <h3>Duration</h3>
         <h3>
@@ -45,7 +45,7 @@ export default function ClassCard({
         </h3>
         <div className="ClassCard--removeItem">
           <IoRemoveCircle
-            className="ClassCard-Icon"
+            className="ClassCard-removeIcon"
             onClick={(e) => {
               e.stopPropagation();
               onRemoveClassClick(classCard.id);
