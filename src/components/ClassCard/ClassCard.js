@@ -1,11 +1,13 @@
 import React from "react";
 import "./ClassCard.css";
-import { IoRemoveCircle } from "react-icons/io5";
+import { IoRemoveCircle, IoHeart } from "react-icons/io5";
 
 export default function ClassCard({
   classCard,
   onRemoveClassClick,
   onPlayClassClick,
+  isFavourite,
+  toogleHeartIcon,
 }) {
   const durationHours = Math.floor(classCard.duration / (60 * 60));
   const durationMin = Math.floor((classCard.duration % (60 * 60)) / 60);
@@ -20,6 +22,14 @@ export default function ClassCard({
         onPlayClassClick(classCard.id);
       }}
     >
+      <IoHeart
+        className={
+          isFavourite
+            ? "FavIcon__ClassCard--active"
+            : "FavIcon__ClassCard--inactive"
+        }
+        onClick={toogleHeartIcon}
+      />
       <h2>{classCard.name}</h2>
       <div className="ClassCard__info">
         <h3>Duration</h3>
