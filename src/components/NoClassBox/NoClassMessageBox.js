@@ -4,7 +4,7 @@ import { IoAddCircle } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 export default function NoClassMessageBox({
-  message = "Let's add some classes!",
+  message = "Let's create some classes!",
 }) {
   return (
     <div className="MessageBox">
