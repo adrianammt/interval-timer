@@ -143,12 +143,6 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     } else return windbell;
   }
 
-  function isMuted(chosenSound) {
-    if (chosenSound === "none") {
-      return true;
-    } else return false;
-  }
-
   function backgroundSound() {
     if (backgroundMusic === "waves") {
       return oceanWaves;
@@ -204,26 +198,26 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
         ref={startSoundRef}
         preload="true"
         src={getSound(startSound)}
-        muted={isMuted(startSound)}
+        muted={startSound === "none" ? true : false}
       />
       <audio
         ref={endSoundRef}
         preload="true"
         src={getSound(endSound)}
-        muted={isMuted(endSound)}
+        muted={endSound === "none" ? true : false}
       />
       <audio
         ref={intervalSoundRef}
         preload="true"
         src={getSound(intervalSound)}
-        muted={isMuted(intervalSound)}
+        muted={intervalSound === "none" ? true : false}
       />
       <audio
         ref={backgroundMusicRef}
         preload="true"
         loop={true}
         src={backgroundSound()}
-        muted={isMuted(backgroundMusic)}
+        muted={backgroundMusic === "none" ? true : false}
       />
     </section>
   );
