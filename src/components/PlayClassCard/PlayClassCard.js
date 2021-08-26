@@ -25,6 +25,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     isFavourite,
   } = classToPlay;
   const [formattedTime, setFormattedTime] = useState("00:00:00");
+  const [prepFormattedTime, setPrepFormattedTime] = useState("00");
   const [resetAnimation, setResetAnimation] = useState(0);
 
   const startSoundRef = useRef();
@@ -33,12 +34,16 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
   const backgroundMusicRef = useRef();
 
   const prepTimer = useTimer({
-    delay: prepTime * 1000,
-    runOnce: true,
+    fireImmediately: true,
+    delay: 1000,
     callback() {
-      mainTimer.start();
-      intervalTimer.start();
-      startSoundRef.current.play();
+      setPrepFormattedTime(getPrepFormattedTime());
+      if (getPrepTime().total >= prepTime) {
+        prepTimer.stop();
+        mainTimer.start();
+        intervalTimer.start();
+        startSoundRef.current.play();
+      }
     },
   });
 
@@ -112,6 +117,23 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     backgroundMusicRef.current.pause();
     setFormattedTime("00:00:00");
     setResetAnimation((prevAnim) => prevAnim + 1);
+  }
+
+  function getPrepTime() {
+    const time = prepTimer.getElapsedRunningTime();
+    const total = Number.parseInt(time / 1000, 10);
+    const seconds = Number.parseInt(total % 60, 10);
+
+    return {
+      total,
+      seconds,
+    };
+  }
+
+  function getPrepFormattedTime() {
+    const time = getPrepTime();
+    const secondsString = time.seconds.toString().padStart(2, "00");
+    return `${secondsString}`;
   }
 
   function getTime() {
@@ -191,6 +213,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
         <div className="PrepTime__Line--time">
           <p>0</p>
           <p>{prepTime} sec</p>
+          <p>{prepFormattedTime}</p>
         </div>
       </div>
       <h3>Class</h3>
