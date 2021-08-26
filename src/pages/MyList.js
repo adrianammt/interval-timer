@@ -2,7 +2,7 @@ import ClassCard from "../components/ClassCard/ClassCard";
 import { useHistory } from "react-router-dom";
 import NoClassMessageBox from "../components/NoClassBox/NoClassMessageBox";
 
-export default function MyList({ data, handleRemoveClass }) {
+export default function MyList({ data, handleRemoveClass, toggleFavourite }) {
   const history = useHistory();
 
   function handlePlayClass(id) {
@@ -25,6 +25,8 @@ export default function MyList({ data, handleRemoveClass }) {
               intervalTime={savedClass.intervalTime}
               onRemoveClassClick={handleRemoveClass}
               onPlayClassClick={handlePlayClass}
+              toogleHeartIcon={toggleFavourite}
+              isFavourite={savedClass.isFavourite}
             />
           );
         })
