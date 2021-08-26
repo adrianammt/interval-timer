@@ -18,11 +18,6 @@ export default function Favourites({
     (savedClass) => savedClass.isFavourite
   );
 
-  // {data
-  //   .filter((savedClass) => savedClass.isFavourite)
-  //   .map((filteredClass) => {
-  //     return
-
   return (
     <div className="ClassCard__wrapper">
       {filteredFavourites.length === 0 ? (
