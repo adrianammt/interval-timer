@@ -36,29 +36,26 @@ export default function ClassCard({
         onClick={handleToogleHeartOnClick}
       />
       <h2 className="ClassCard__title">{classCard.name}</h2>
-      <div className="ClassCard__info">
-        <h3>Duration</h3>
-        <h3>
-          {durationHours !== 0
-            ? `${durationHours} h ${durationMin} min`
-            : `${durationMin} min`}
-        </h3>
-        <div className="ClassCard--removeItem">
-          <IoRemoveCircle
-            className="ClassCard-removeIcon"
-            onClick={(e) => {
-              e.stopPropagation();
-              onRemoveClassClick(classCard.id);
-            }}
-          />
-        </div>
-        <h3>Intervals</h3>
-        <h3>
-          {intervalHours !== 0
-            ? `${intervalHours} h ${intervalMin} min`
-            : `${intervalMin} min`}
-        </h3>
-      </div>
+      <h3 className="ClassCard__duration">Duration</h3>
+      <h3 className="ClassCard__duration--value">
+        {durationHours !== 0
+          ? `${durationHours} h ${durationMin} min`
+          : `${durationMin} min`}
+      </h3>
+
+      <h3 className="ClassCard__intervals">Intervals</h3>
+      <h3 className="ClassCard__intervals--value">
+        {intervalHours !== 0
+          ? `${intervalHours} h ${intervalMin} min`
+          : `${intervalMin} min`}
+      </h3>
+      <IoRemoveCircle
+        className="ClassCard-removeIcon"
+        onClick={(e) => {
+          e.stopPropagation();
+          onRemoveClassClick(classCard.id);
+        }}
+      />
     </section>
   );
 }
