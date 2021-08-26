@@ -3,11 +3,12 @@
   color: var(--color-primary);
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
-  padding: 2.5rem 1.5rem;
+  gap: 0.8rem;
+  padding: 2rem 1.5rem;
   border-radius: 15px;
   position: relative;
   width: 100%;
+  margin-top: 0.5rem;
 }
 
 .PlayClass h2 {
@@ -55,8 +56,8 @@
 .FavIcon--inactive {
   font-size: 2.3rem;
   position: absolute;
-  top: -12px;
-  right: 25px;
+  top: -10px;
+  right: 15px;
   color: var(--color-icon-inactive);
   stroke: var(--color-accent);
   stroke-width: 40;
@@ -69,8 +70,8 @@
 .FavIcon--active {
   font-size: 2.3rem;
   position: absolute;
-  top: -12px;
-  right: 25px;
+  top: -10px;
+  right: 15px;
   stroke: var(--color-accent);
   stroke-width: 40;
   color: var(--color-accent);
