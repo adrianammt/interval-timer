@@ -13,11 +13,10 @@
   position: relative;
 }
 
-.ClassCard h2 {
+.ClassCard__title {
   padding-bottom: 1rem;
 }
 
-.ClassCard:active,
 .ClassCard:hover {
   background-color: var(--color-accent-onAction);
   color: var(--color-text-onDark);
@@ -37,15 +36,14 @@
   grid-row-end: 3;
   display: flex;
   justify-content: right;
-  align-items: center;
+  align-items: flex-end;
 }
 
-.ClassCard-Icon {
-  font-size: 1.8rem;
+.ClassCard-removeIcon {
+  font-size: 2.3rem;
 }
 
-.ClassCard-Icon:hover,
-.ClassCard-Icon:active {
+.ClassCard-removeIcon:hover {
   color: var(--color-danger);
 }
 
@@ -53,7 +51,7 @@
   font-size: 2.3rem;
   position: absolute;
   top: -10px;
-  right: 12px;
+  right: 15px;
   color: var(--color-icon-inactive);
   stroke: var(--color-accent);
   stroke-width: 40;
@@ -61,13 +59,14 @@
 
 .FavIcon__ClassCard--inactive:hover {
   cursor: pointer;
+  stroke: var(--color-primary-onAction);
 }
 
 .FavIcon__ClassCard--active {
   font-size: 2.3rem;
   position: absolute;
   top: -10px;
-  right: 12px;
+  right: 15px;
   stroke: var(--color-accent);
   stroke-width: 40;
   color: var(--color-accent);
@@ -75,4 +74,5 @@
 
 .FavIcon__ClassCard--active:hover {
   cursor: pointer;
+  stroke: var(--color-text-onDark);
 }
