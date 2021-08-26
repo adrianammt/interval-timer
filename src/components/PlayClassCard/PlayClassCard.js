@@ -194,15 +194,16 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
         </div>
       </div>
       <h3>Class</h3>
-      <CountdownCircleTimer
-        key={resetAnimation}
-        isPlaying={mainTimer.isRunning()}
-        duration={duration}
-        colors={[["#2b0080", 0.8], ["#2b0080", 0.8], ["#A30000"]]}
-      />
-
-      <p>{formattedTime}</p>
-
+      <div className="Circle-wrapper">
+        <CountdownCircleTimer
+          key={resetAnimation}
+          isPlaying={mainTimer.isRunning()}
+          duration={duration}
+          colors={[["#2b0080", 0.8], ["#2b0080", 0.8], ["#A30000"]]}
+        >
+          <p>{formattedTime}</p>
+        </CountdownCircleTimer>
+      </div>
       <audio
         ref={startSoundRef}
         preload="true"
