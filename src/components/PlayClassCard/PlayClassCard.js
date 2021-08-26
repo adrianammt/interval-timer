@@ -212,8 +212,9 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
         <div className="PrepTime__line"></div>
         <div className="PrepTime__Line--time">
           <p>0</p>
-          <p>{prepTime} sec</p>
-          <p>{prepFormattedTime}</p>
+          <p>
+            {prepTime} sec ({prepFormattedTime})
+          </p>
         </div>
       </div>
       <h3>Class</h3>
