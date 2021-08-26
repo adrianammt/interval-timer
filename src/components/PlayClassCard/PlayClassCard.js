@@ -131,8 +131,8 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
   }
 
   function getPrepFormattedTime() {
-    const time = getPrepTime();
-    const secondsString = time.seconds.toString().padStart(2, "00");
+    const { seconds } = getPrepTime();
+    const secondsString = seconds.toString().padStart(2, "00");
     return `${secondsString}`;
   }
 
