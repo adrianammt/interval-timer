@@ -209,10 +209,10 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
       </div>
       <h3>Preparation Time</h3>
       <div className="PrepTime">
-        <div className="PrepTime__line"></div>
-        <div className="PrepTime__Line--time">
-          <p>0</p>
-          <p>
+        <div className="PrepTime-line"></div>
+        <div className="PrepTime-line__time">
+          <p className="PrepTime-line__time--text">0</p>
+          <p className="PrepTime-line__time--text">
             {prepTime} sec ({prepFormattedTime})
           </p>
         </div>
@@ -225,7 +225,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
           duration={duration}
           colors={[["#2b0080", 0.8], ["#2b0080", 0.8], ["#A30000"]]}
         >
-          <p>{formattedTime}</p>
+          <p className="Circle-wrapper__text">{formattedTime}</p>
         </CountdownCircleTimer>
       </div>
       <audio
