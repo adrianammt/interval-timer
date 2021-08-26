@@ -9,6 +9,7 @@ import bigSingingBowl from "../../assets/bigSingingBowl.mp3";
 import oceanWaves from "../../assets/oceanWaves.mp3";
 import forest from "../../assets/forest.mp3";
 import windbell from "../../assets/windbell.mp3";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
 export default function PlayClassCard({ classToPlay, toggleFavourite }) {
   const {
@@ -24,6 +25,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     isFavourite,
   } = classToPlay;
   const [formattedTime, setFormattedTime] = useState("00:00:00");
+  const [resetAnimation, setResetAnimation] = useState(0);
 
   const startSoundRef = useRef();
   const endSoundRef = useRef();
@@ -109,6 +111,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     intervalTimer.stop();
     backgroundMusicRef.current.pause();
     setFormattedTime("00:00:00");
+    setResetAnimation((prevAnim) => prevAnim + 1);
   }
 
   function getTime() {
@@ -191,9 +194,15 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
         </div>
       </div>
       <h3>Class</h3>
-      <div className="Circle">
-        <p>{formattedTime}</p>
-      </div>
+      <CountdownCircleTimer
+        key={resetAnimation}
+        isPlaying={mainTimer.isRunning()}
+        duration={duration}
+        colors={[["#2b0080", 0.8], ["#2b0080", 0.8], ["#A30000"]]}
+      />
+
+      <p>{formattedTime}</p>
+
       <audio
         ref={startSoundRef}
         preload="true"
