@@ -14,7 +14,7 @@ export default function Main({
 }) {
   return (
     <main className="Content">
-      <ToastContainer delay={3000} position={"top-center"} />
+      <ToastContainer delay={2000} position={"top-center"} />
       <Switch>
         <Route path="/myList/:id">
           <PlayClass data={listOfClasses} toggleFavourite={toggleFavourite} />
