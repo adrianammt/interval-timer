@@ -10,6 +10,7 @@
   color: var(--color-primary);
   padding: 1rem;
   border-radius: 15px;
+  position: relative;
 }
 
 .ClassCard h2 {
@@ -46,4 +47,32 @@
 .ClassCard-Icon:hover,
 .ClassCard-Icon:active {
   color: var(--color-danger);
+}
+
+.FavIcon__ClassCard--inactive {
+  font-size: 2.3rem;
+  position: absolute;
+  top: -10px;
+  right: 12px;
+  color: var(--color-icon-inactive);
+  stroke: var(--color-accent);
+  stroke-width: 40;
+}
+
+.FavIcon__ClassCard--inactive:hover {
+  cursor: pointer;
+}
+
+.FavIcon__ClassCard--active {
+  font-size: 2.3rem;
+  position: absolute;
+  top: -12px;
+  right: 25px;
+  stroke: var(--color-accent);
+  stroke-width: 40;
+  color: var(--color-accent);
+}
+
+.FavIcon__ClassCard--active:hover {
+  cursor: pointer;
 }
