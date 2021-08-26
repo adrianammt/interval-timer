@@ -2,7 +2,11 @@ import "./Favourites.css";
 import ClassCard from "../components/ClassCard/ClassCard";
 import { useHistory } from "react-router-dom";
 
-export default function Favourites({ data, handleRemoveClass }) {
+export default function Favourites({
+  data,
+  handleRemoveClass,
+  toggleFavourite,
+}) {
   const history = useHistory();
 
   function handlePlayClass(id) {
@@ -24,6 +28,8 @@ export default function Favourites({ data, handleRemoveClass }) {
               intervalTime={filteredClass.intervalTime}
               onRemoveClassClick={handleRemoveClass}
               onPlayClassClick={handlePlayClass}
+              toogleHeartIcon={toggleFavourite}
+              isFavourite={filteredClass.isFavourite}
             />
           );
         })}
