@@ -1,6 +1,7 @@
 import "./Favourites.css";
 import ClassCard from "../components/ClassCard/ClassCard";
 import { useHistory } from "react-router-dom";
+import NoFavouritesMessageBox from "../components/NoFavourites/NoFavouritesMessageBox";
 
 export default function Favourites({
   data,
@@ -13,11 +14,21 @@ export default function Favourites({
     history.push(`/myList/${id}`);
   }
 
+  const filteredFavourites = data.filter(
+    (savedClass) => savedClass.isFavourite
+  );
+
+  // {data
+  //   .filter((savedClass) => savedClass.isFavourite)
+  //   .map((filteredClass) => {
+  //     return
+
   return (
     <div className="ClassCard__wrapper">
-      {data
-        .filter((savedClass) => savedClass.isFavourite)
-        .map((filteredClass) => {
+      {filteredFavourites.length === 0 ? (
+        <NoFavouritesMessageBox />
+      ) : (
+        filteredFavourites.map((filteredClass) => {
           return (
             <ClassCard
               classCard={filteredClass}
@@ -32,7 +43,8 @@ export default function Favourites({
               isFavourite={filteredClass.isFavourite}
             />
           );
-        })}
+        })
+      )}
     </div>
   );
 }
