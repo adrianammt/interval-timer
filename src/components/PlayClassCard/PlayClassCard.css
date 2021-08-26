@@ -86,8 +86,9 @@
   align-self: center;
 }
 
-.Circle p {
+.Circle-wrapper p {
   align-self: center;
+  font-size: 1.4rem;
 }
 
 .PlayClassCard__wrapper {
