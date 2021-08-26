@@ -15,6 +15,11 @@ export default function ClassCard({
   const intervalHours = Math.floor(classCard.intervalTime / (60 * 60));
   const intervalMin = Math.floor((classCard.intervalTime % (60 * 60)) / 60);
 
+  function handleToogleHeartOnClick(e) {
+    e.stopPropagation();
+    toogleHeartIcon(classCard.id);
+  }
+
   return (
     <section
       className="ClassCard"
@@ -28,7 +33,7 @@ export default function ClassCard({
             ? "FavIcon__ClassCard--active"
             : "FavIcon__ClassCard--inactive"
         }
-        onClick={toogleHeartIcon}
+        onClick={handleToogleHeartOnClick}
       />
       <h2>{classCard.name}</h2>
       <div className="ClassCard__info">
