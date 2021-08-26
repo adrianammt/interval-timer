@@ -1,14 +1,14 @@
 import React from "react";
-import NoClassMessageBox from "./NoClassMessageBox";
+import NoFavouritesMessageBox from "./NoFavouritesMessageBox";
 
 export default {
-  title: "MessageBox",
-  component: NoClassMessageBox,
+  title: "FavouritesMessageBox",
+  component: NoFavouritesMessageBox,
 };
 
-const Template = (args) => <NoClassMessageBox {...args} />;
+const Template = (args) => <NoFavouritesMessageBox {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  message: "Let's add some classes!",
+  message: "You have no favourite classes yet.",
 };
