@@ -1,6 +1,6 @@
 import React from "react";
 import "./PlayClassCard.css";
-import { IoPlay, IoStop, IoPause, IoHeart } from "react-icons/io5";
+import { IoPlay, IoStop, IoPause, IoHeart, IoOptions } from "react-icons/io5";
 import { useState, useRef } from "react";
 import { useTimer } from "react-use-precision-timer";
 import tibetanBowl from "../../assets/tibetanBowl.mp3";
@@ -180,7 +180,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
         className={isFavourite ? "FavIcon--active" : "FavIcon--inactive"}
         onClick={toggleHeartIcon}
       />
-      <h2>{name}</h2>
+      <h2 className="PlayClass__title">{name}</h2>
       <div className="PlayClass__controls">
         <IoPause
           onClick={handlePauseClick}
@@ -227,6 +227,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
         >
           <p className="Circle-wrapper__text">{formattedTime}</p>
         </CountdownCircleTimer>
+        <IoOptions className="PlayClass__editOptions" />
       </div>
       <audio
         ref={startSoundRef}
