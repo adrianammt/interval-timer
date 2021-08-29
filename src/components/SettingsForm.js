@@ -125,6 +125,7 @@ export default function SettingsForm({
             required
             onChange={handleOnChangeName}
             value={classInput.name}
+            maxLength="20"
           />
         </div>
         <div className="form-component">
