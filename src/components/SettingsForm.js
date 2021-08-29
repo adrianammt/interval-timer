@@ -2,20 +2,68 @@ import "./SettingsForm.css";
 import { v4 as uuidv4 } from "uuid";
 import { useState, useEffect } from "react";
 
-export default function SettingsForm({ onSaveFormInput }) {
-  const [classInput, setClassInput] = useState();
+const initialInput = {
+  name: "",
+  duration: 600,
+  prepTime: 5,
+  intervalTime: 60,
+  startSound: "none",
+  endSound: "none",
+  intervalSound: "none",
+  backgroundMusic: "none",
+};
+
+export default function SettingsForm({
+  handleSaveFormInput,
+  isEdit,
+  classIdToEdit,
+  toggleIsEdit,
+  handleUpdateEntry,
+  inputEntry,
+}) {
+  const [classInput, setClassInput] = useState(initialInput);
+  //I need something like this for finding id of class to edit.
+  // function toggleFavourite(id) {
+  //   const toToggleClass = listOfClasses.filter(
+  //     (savedClass) => savedClass.id === id
+  //   );
+  //   toToggleClass[0].isFavourite = !toToggleClass[0].isFavourite;
+
+  //   const toggledClassIndex = listOfClasses.findIndex(
+  //     (savedClass) => savedClass.id === id
+  //   );
+  //   setListOfClasses([
+  //     ...listOfClasses.slice(0, toggledClassIndex),
+  //     toToggleClass[0],
+  //     ...listOfClasses.slice(toggledClassIndex + 1),
+  //   ]);
+  // }
+
+  useEffect(() => {
+    isEdit &&
+      setClassInput({
+        name: inputEntry[0].name,
+        duration: inputEntry[0].duration,
+        prepTime: inputEntry[0].prepTime,
+        intervalTime: inputEntry[0].intervalTime,
+        startSound: inputEntry[0].startSound,
+        endSound: inputEntry[0].endSound,
+        intervalSound: inputEntry[0].intervalSound,
+        backgroundMusic: inputEntry[0].backgroundMusic,
+      });
+  }, [isEdit, inputEntry, classIdToEdit]);
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    const id = uuidv4();
-
-    const newClassInput = {
-      id,
-      isFavourite: false,
-    };
-
-    onSaveFormInput(newClassInput);
+    if (isEdit) {
+      handleUpdateEntry(classIdToEdit, classInput);
+      toggleIsEdit();
+      setClassInput(initialInput);
+    } else {
+      handleSaveFormInput({ ...classInput, id: uuidv4() });
+      setClassInput(initialInput);
+    }
   }
 
   function handleOnChangeName(e) {
@@ -92,9 +140,9 @@ export default function SettingsForm({ onSaveFormInput }) {
             id="durationInput"
             className="time-select"
             required
-            defaultValue="00:30"
+            defaultValue="00:10"
             onChange={handleOnChangeDuration}
-            value={classInput.duration}
+            // value={classInput.duration}
           />
         </div>
         <div className="form-component">
@@ -106,7 +154,7 @@ export default function SettingsForm({ onSaveFormInput }) {
             id="prepTime"
             className="time-select"
             onChange={handleOnChangePrepTime}
-            value={classInput.prepTime}
+            // value={classInput.prepTime}
           >
             <option value="05">05 sec</option>
             <option value="10">10 sec</option>
@@ -129,7 +177,7 @@ export default function SettingsForm({ onSaveFormInput }) {
             id="intervalTimeInput"
             defaultValue="00:01"
             onChange={handleOnChangeIntervalTime}
-            value={classInput.intervalTime}
+            // value={classInput.intervalTime}
           />
         </div>
         <div className="form-component">
@@ -142,7 +190,7 @@ export default function SettingsForm({ onSaveFormInput }) {
             id="startSound"
             defaultValue="Bell"
             onChange={handleOnChangeStartSound}
-            value={classInput.startSound}
+            // value={classInput.startSound}
           >
             <option value="none">None</option>
             <option value="bell">Bell</option>
@@ -160,7 +208,7 @@ export default function SettingsForm({ onSaveFormInput }) {
             name="endSound"
             id="endSound"
             onChange={handleOnChangeEndSound}
-            value={classInput.endSound}
+            // value={classInput.endSound}
           >
             <option value="none">None</option>
             <option value="bell">Bell</option>
@@ -178,7 +226,7 @@ export default function SettingsForm({ onSaveFormInput }) {
             name="intervalSound"
             id="intervalSound"
             onChange={handleOnChangeIntervalSound}
-            value={classInput.intervalSound}
+            // value={classInput.intervalSound}
           >
             <option value="none">None</option>
             <option value="bell">Bell</option>
@@ -196,7 +244,7 @@ export default function SettingsForm({ onSaveFormInput }) {
             name="backgroundMusic"
             id="backgroundMusic"
             onChange={handleOnChangeBackgroundMusic}
-            value={classInput.backgroundMusic}
+            // value={classInput.backgroundMusic}
           >
             <option value="none">None</option>
             <option value="waves">Waves</option>
@@ -206,7 +254,7 @@ export default function SettingsForm({ onSaveFormInput }) {
       </form>
 
       <button type="submit" className="saveButton" form="settingsForm">
-        Save
+        {isEdit ? "Update Settings" : "Save Class"}
       </button>
     </>
   );
