@@ -47,8 +47,6 @@ function App() {
   function handleEditClass(id) {
     setIsEdit(true);
     setClassIdToEdit(id);
-    console.log("Edit Click");
-    console.log(classIdToEdit);
   }
 
   function toggleIsEdit() {
@@ -61,6 +59,7 @@ function App() {
       updatedEntry,
       ...listOfClasses.slice(id + 1),
     ]);
+    toastSavedMessage("Class updated!");
   }
 
   return (
