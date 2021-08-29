@@ -8,12 +8,14 @@ import toastSavedMessage from "./feedbackToUser/toastSavedMessage";
 function App() {
   const savedClasses = JSON.parse(localStorage.getItem("classList")) || [];
   const [listOfClasses, setListOfClasses] = useState(savedClasses);
+  const [classIdToEdit, setClassIdToEdit] = useState(0);
+  const [isEdit, setIsEdit] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("classList", JSON.stringify(listOfClasses));
   }, [listOfClasses]);
 
-  function onSaveFormInput(listOfClassesData) {
+  function handleSaveFormInput(listOfClassesData) {
     setListOfClasses([...listOfClasses, listOfClassesData]);
     toastSavedMessage("Class succesfully saved!");
   }
@@ -41,14 +43,38 @@ function App() {
     ]);
   }
 
+  function handleEditClass(id) {
+    setIsEdit(true);
+    setClassIdToEdit(id);
+    console.log("Edit Click");
+    console.log(classIdToEdit);
+  }
+
+  function toggleIsEdit() {
+    setIsEdit(!isEdit);
+  }
+
+  function handleUpdateEntry(id, updatedEntry) {
+    setListOfClasses([
+      ...listOfClasses.slice(0, id),
+      updatedEntry,
+      ...listOfClasses.slice(id + 1),
+    ]);
+  }
+
   return (
     <div className="App">
       <Header />
       <Main
-        onSaveFormInput={onSaveFormInput}
+        handleSaveFormInput={handleSaveFormInput}
         onRemoveClassClick={handleRemoveClass}
         listOfClasses={listOfClasses}
         toggleFavourite={toggleFavourite}
+        toggleIsEdit={toggleIsEdit}
+        updatedEntry={handleUpdateEntry}
+        isEdit={isEdit}
+        classIdToEdit={classIdToEdit}
+        handleEditClass={handleEditClass}
       />
       <Footer />
     </div>
