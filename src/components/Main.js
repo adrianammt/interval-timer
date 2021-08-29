@@ -7,20 +7,29 @@ import "./Main.css";
 import { ToastContainer } from "react-toast";
 
 export default function Main({
-  onSaveFormInput,
+  handleSaveFormInput,
   listOfClasses,
   onRemoveClassClick,
   toggleFavourite,
+  handleEditClass,
 }) {
   return (
     <main className="Content">
       <ToastContainer delay={2000} position={"top-center"} />
       <Switch>
         <Route path="/myList/:id">
-          <PlayClass data={listOfClasses} toggleFavourite={toggleFavourite} />
+          <PlayClass
+            listOfClasses={listOfClasses}
+            toggleFavourite={toggleFavourite}
+            handleEditClass={handleEditClass}
+          />
         </Route>
         <Route path="/create">
-          <Create onSaveFormInput={onSaveFormInput} />
+          <Create
+            handleSaveFormInput={handleSaveFormInput}
+            listOfClasses={listOfClasses}
+            handleEditClass={handleEditClass}
+          />
         </Route>
         <Route path="/myList">
           <MyList
