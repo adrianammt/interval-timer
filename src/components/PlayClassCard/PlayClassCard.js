@@ -121,6 +121,7 @@ export default function PlayClassCard({
     intervalTimer.stop();
     backgroundMusicRef.current.pause();
     setFormattedTime("00:00:00");
+    setPrepFormattedTime("00");
     setResetAnimation((prevAnim) => prevAnim + 1);
   }
 
@@ -179,6 +180,9 @@ export default function PlayClassCard({
     } else return forest;
   }
 
+  const durationHours = Math.floor(duration / (60 * 60));
+  const durationMin = Math.floor((duration % (60 * 60)) / 60);
+
   return (
     <section className="PlayClass">
       <IoHeart
@@ -212,33 +216,36 @@ export default function PlayClassCard({
           }
         />
       </div>
-      <h3>Preparation Time</h3>
-      <div className="PrepTime">
-        <div className="PrepTime-line"></div>
-        <div className="PrepTime-line__time">
-          <p className="PrepTime-line__time--text">0</p>
-          <p className="PrepTime-line__time--text">
-            {prepTime} sec ({prepFormattedTime})
-          </p>
-        </div>
-      </div>
-      <h3>Class</h3>
+      <h3>Preparation Time: {prepTime} sec</h3>
+
+      <p className="PrepTime-line__time--text">{prepFormattedTime}</p>
+      <div className="PrepTime-line"></div>
+      <div className="PrepTime-line__time"></div>
+
+      <h3>
+        Class:{" "}
+        {durationHours !== 0
+          ? `${durationHours} h ${durationMin} min`
+          : `${durationMin} min`}
+      </h3>
       <div className="Circle-wrapper">
         <CountdownCircleTimer
           key={resetAnimation}
           isPlaying={mainTimer.isRunning()}
           duration={duration}
           colors={[["#2b0080", 0.8], ["#2b0080", 0.8], ["#A30000"]]}
+          size={150}
+          strokeWidth={9}
         >
           <p className="Circle-wrapper__text">{formattedTime}</p>
         </CountdownCircleTimer>
-        <Link to="/create">
-          <IoOptions
-            className="PlayClass__editOptions"
-            onClick={handleEditClass}
-          />
-        </Link>
       </div>
+      <Link to="/create">
+        <IoOptions
+          className="PlayClass__editOptions"
+          onClick={handleEditClass}
+        />
+      </Link>
       <audio
         ref={startSoundRef}
         preload="true"
