@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Main from "./components/Main";
 import { useEffect, useState } from "react";
+import Div100vh from "react-div-100vh";
 import toastSavedMessage from "./feedbackToUser/toastSavedMessage";
 
 function App() {
@@ -63,7 +64,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <Div100vh className="App">
       <Header />
       <Main
         handleSaveFormInput={handleSaveFormInput}
@@ -77,7 +78,7 @@ function App() {
         handleEditClass={handleEditClass}
       />
       <Footer />
-    </div>
+    </Div100vh>
   );
 }
 
