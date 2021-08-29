@@ -2,6 +2,7 @@ import React from "react";
 import "./PlayClassCard.css";
 import { IoPlay, IoStop, IoPause, IoHeart, IoOptions } from "react-icons/io5";
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { useTimer } from "react-use-precision-timer";
 import tibetanBowl from "../../assets/tibetanBowl.mp3";
 import bellChime from "../../assets/bellChime.mp3";
@@ -11,7 +12,11 @@ import forest from "../../assets/forest.mp3";
 import windbell from "../../assets/windbell.mp3";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
-export default function PlayClassCard({ classToPlay, toggleFavourite }) {
+export default function PlayClassCard({
+  classToPlay,
+  toggleFavourite,
+  handleEditClass,
+}) {
   const {
     id,
     name,
@@ -227,7 +232,12 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
         >
           <p className="Circle-wrapper__text">{formattedTime}</p>
         </CountdownCircleTimer>
-        <IoOptions className="PlayClass__editOptions" />
+        <Link to="/create">
+          <IoOptions
+            className="PlayClass__editOptions"
+            onClick={handleEditClass}
+          />
+        </Link>
       </div>
       <audio
         ref={startSoundRef}
