@@ -54,11 +54,13 @@ function App() {
   }
 
   function handleUpdateEntry(id, updatedEntry) {
+    const index = listOfClasses.findIndex((savedClass) => savedClass.id === id);
     setListOfClasses([
-      ...listOfClasses.slice(0, id),
+      ...listOfClasses.slice(0, index),
       updatedEntry,
-      ...listOfClasses.slice(id + 1),
+      ...listOfClasses.slice(index + 1),
     ]);
+    toggleIsEdit();
     toastSavedMessage("Class updated!");
   }
 
@@ -71,7 +73,7 @@ function App() {
         listOfClasses={listOfClasses}
         toggleFavourite={toggleFavourite}
         toggleIsEdit={toggleIsEdit}
-        updatedEntry={handleUpdateEntry}
+        handleUpdateEntry={handleUpdateEntry}
         isEdit={isEdit}
         classIdToEdit={classIdToEdit}
         handleEditClass={handleEditClass}
