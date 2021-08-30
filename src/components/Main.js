@@ -12,6 +12,9 @@ export default function Main({
   onRemoveClassClick,
   toggleFavourite,
   handleEditClass,
+  classIdToEdit,
+  isEdit,
+  handleUpdateEntry,
 }) {
   return (
     <main className="Content">
@@ -29,6 +32,9 @@ export default function Main({
             handleSaveFormInput={handleSaveFormInput}
             listOfClasses={listOfClasses}
             handleEditClass={handleEditClass}
+            classIdToEdit={classIdToEdit}
+            isEdit={isEdit}
+            handleUpdateEntry={handleUpdateEntry}
           />
         </Route>
         <Route path="/myList">
