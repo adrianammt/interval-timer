@@ -102,14 +102,13 @@ export default function PlayClassCard({
   }
 
   function handlePlayClick() {
-    if (!mainTimer.isStarted()) {
+    if (prepTimer.getElapsedRunningTime() === 0) {
       prepTimer.start();
+    } else if (prepTimer.isPaused()) {
+      prepTimer.resume();
     }
-    if (!mainTimer.isStarted()) {
-      if (prepTimer.isPaused()) {
-        prepTimer.resume();
-      }
-    } else {
+
+    if (mainTimer.isStarted()) {
       mainTimer.resume();
       intervalTimer.resume();
     }
