@@ -242,7 +242,9 @@ export default function PlayClassCard({
       <Link to="/create">
         <IoOptions
           className="PlayClass__editOptions"
-          onClick={handleEditClass(id)}
+          onClick={() => {
+            handleEditClass(id);
+          }}
         />
       </Link>
       <audio
