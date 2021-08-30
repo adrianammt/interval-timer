@@ -17,48 +17,36 @@ export default function SettingsForm({
   handleSaveFormInput,
   isEdit,
   classIdToEdit,
-  toggleIsEdit,
   handleUpdateEntry,
-  inputEntry,
+  listOfClasses,
 }) {
   const [classInput, setClassInput] = useState(initialInput);
-  //I need something like this for finding id of class to edit.
-  // function toggleFavourite(id) {
-  //   const toToggleClass = listOfClasses.filter(
-  //     (savedClass) => savedClass.id === id
-  //   );
-  //   toToggleClass[0].isFavourite = !toToggleClass[0].isFavourite;
-
-  //   const toggledClassIndex = listOfClasses.findIndex(
-  //     (savedClass) => savedClass.id === id
-  //   );
-  //   setListOfClasses([
-  //     ...listOfClasses.slice(0, toggledClassIndex),
-  //     toToggleClass[0],
-  //     ...listOfClasses.slice(toggledClassIndex + 1),
-  //   ]);
-  // }
 
   useEffect(() => {
-    isEdit &&
+    if (isEdit) {
+      const classToEdit = listOfClasses.filter(
+        (savedClass) => savedClass.id === classIdToEdit
+      );
+
       setClassInput({
-        name: inputEntry[0].name,
-        duration: inputEntry[0].duration,
-        prepTime: inputEntry[0].prepTime,
-        intervalTime: inputEntry[0].intervalTime,
-        startSound: inputEntry[0].startSound,
-        endSound: inputEntry[0].endSound,
-        intervalSound: inputEntry[0].intervalSound,
-        backgroundMusic: inputEntry[0].backgroundMusic,
+        id: classToEdit[0].id,
+        name: classToEdit[0].name,
+        duration: classToEdit[0].duration,
+        prepTime: classToEdit[0].prepTime,
+        intervalTime: classToEdit[0].intervalTime,
+        startSound: classToEdit[0].startSound,
+        endSound: classToEdit[0].endSound,
+        intervalSound: classToEdit[0].intervalSound,
+        backgroundMusic: classToEdit[0].backgroundMusic,
       });
-  }, [isEdit, inputEntry, classIdToEdit]);
+    }
+  }, [isEdit, classIdToEdit, listOfClasses]);
 
   function handleSubmit(event) {
     event.preventDefault();
 
     if (isEdit) {
       handleUpdateEntry(classIdToEdit, classInput);
-      toggleIsEdit();
       setClassInput(initialInput);
     } else {
       handleSaveFormInput({ ...classInput, id: uuidv4() });
@@ -76,6 +64,9 @@ export default function SettingsForm({
     const tHours = durationInput.split(":")[0];
     const tMinutes = durationInput.split(":")[1];
     const duration = Number(tHours) * 3600 + Number(tMinutes) * 60;
+    if (duration === 0) {
+      alert("Duration can't be 00:00");
+    }
     setClassInput({ ...classInput, duration });
   }
 
@@ -109,6 +100,26 @@ export default function SettingsForm({
     setClassInput({ ...classInput, backgroundMusic });
   }
 
+  const classDuration = classInput.duration;
+  const total = parseInt(classDuration, 10);
+  const hours = Math.floor(total / 3600);
+  const minutes = Math.floor(total / 60) % 60;
+
+  const durationToString =
+    (hours < 10 ? "0" + hours : hours) +
+    ":" +
+    (minutes < 10 ? "0" + minutes : minutes);
+
+  const classIntervalTime = classInput.intervalTime;
+  const intTotal = parseInt(classIntervalTime, 10);
+  const iHours = Math.floor(intTotal / 3600);
+  const iMinutes = Math.floor(intTotal / 60) % 60;
+
+  const intervalToString =
+    (iHours < 10 ? "0" + iHours : iHours) +
+    ":" +
+    (iMinutes < 10 ? "0" + iMinutes : iMinutes);
+
   return (
     <>
       <form className="form" onSubmit={handleSubmit} id="settingsForm">
@@ -141,9 +152,8 @@ export default function SettingsForm({
             id="durationInput"
             className="time-select"
             required
-            defaultValue="00:10"
             onChange={handleOnChangeDuration}
-            // value={classInput.duration}
+            value={durationToString}
           />
         </div>
         <div className="form-component">
@@ -155,7 +165,7 @@ export default function SettingsForm({
             id="prepTime"
             className="time-select"
             onChange={handleOnChangePrepTime}
-            // value={classInput.prepTime}
+            value={classInput.prepTime}
           >
             <option value="05">05 sec</option>
             <option value="10">10 sec</option>
@@ -176,9 +186,8 @@ export default function SettingsForm({
             required
             name="intervalTimeInput"
             id="intervalTimeInput"
-            defaultValue="00:01"
             onChange={handleOnChangeIntervalTime}
-            // value={classInput.intervalTime}
+            value={intervalToString}
           />
         </div>
         <div className="form-component">
@@ -189,9 +198,8 @@ export default function SettingsForm({
             className="sound-select"
             name="startSound"
             id="startSound"
-            defaultValue="Bell"
             onChange={handleOnChangeStartSound}
-            // value={classInput.startSound}
+            value={classInput.startSound}
           >
             <option value="none">None</option>
             <option value="bell">Bell</option>
@@ -209,7 +217,7 @@ export default function SettingsForm({
             name="endSound"
             id="endSound"
             onChange={handleOnChangeEndSound}
-            // value={classInput.endSound}
+            value={classInput.endSound}
           >
             <option value="none">None</option>
             <option value="bell">Bell</option>
@@ -227,7 +235,7 @@ export default function SettingsForm({
             name="intervalSound"
             id="intervalSound"
             onChange={handleOnChangeIntervalSound}
-            // value={classInput.intervalSound}
+            value={classInput.intervalSound}
           >
             <option value="none">None</option>
             <option value="bell">Bell</option>
@@ -245,7 +253,7 @@ export default function SettingsForm({
             name="backgroundMusic"
             id="backgroundMusic"
             onChange={handleOnChangeBackgroundMusic}
-            // value={classInput.backgroundMusic}
+            value={classInput.backgroundMusic}
           >
             <option value="none">None</option>
             <option value="waves">Waves</option>
