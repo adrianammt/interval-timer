@@ -5,19 +5,17 @@ export default function Create({
   handleEditClass,
   listOfClasses,
   classIdToEdit,
+  isEdit,
+  handleUpdateEntry,
 }) {
-  const classToEdit = listOfClasses.filter(
-    (savedClass) => savedClass.id === classIdToEdit
-  );
-  console.log(listOfClasses);
-  console.log(classToEdit);
-  console.log(classIdToEdit);
-
   return (
     <SettingsForm
-      classToEdit={classToEdit[0]}
       handleSaveFormInput={handleSaveFormInput}
       handleEditClass={handleEditClass}
+      classIdToEdit={classIdToEdit}
+      listOfClasses={listOfClasses}
+      isEdit={isEdit}
+      handleUpdateEntry={handleUpdateEntry}
     />
   );
 }
