@@ -100,3 +100,10 @@
   cursor: pointer;
   stroke: var(--color-text-onDark);
 }
+
+@media (min-width: 480px) {
+  .ClassCard {
+    width: 500px;
+    align-self: center;
+  }
+}

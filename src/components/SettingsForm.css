@@ -73,3 +73,10 @@
   text-align: right;
   color: var(--color-text-onDark);
 }
+
+@media (min-width: 600px) {
+  .form {
+    width: 550px;
+    align-self: center;
+  }
+}

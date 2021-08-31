@@ -22,3 +22,10 @@
   transition: 1s ease-in-out;
   cursor: pointer;
 }
+
+@media (min-width: 600px) {
+  .MessageBox {
+    width: 550px;
+    align-self: center;
+  }
+}
