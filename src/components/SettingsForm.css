@@ -37,6 +37,7 @@
   text-align: right;
   color: var(--color-text-onDark);
   font-size: 1em;
+  padding-right: 0.3rem;
 }
 
 .time-select {
