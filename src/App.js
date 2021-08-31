@@ -3,17 +3,20 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Main from "./components/Main";
 import { useEffect, useState } from "react";
+import Div100vh from "react-div-100vh";
 import toastSavedMessage from "./feedbackToUser/toastSavedMessage";
 
 function App() {
   const savedClasses = JSON.parse(localStorage.getItem("classList")) || [];
   const [listOfClasses, setListOfClasses] = useState(savedClasses);
+  const [classIdToEdit, setClassIdToEdit] = useState(0);
+  const [isEdit, setIsEdit] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("classList", JSON.stringify(listOfClasses));
   }, [listOfClasses]);
 
-  function onSaveFormInput(listOfClassesData) {
+  function handleSaveFormInput(listOfClassesData) {
     setListOfClasses([...listOfClasses, listOfClassesData]);
     toastSavedMessage("Class succesfully saved!");
   }
@@ -41,17 +44,42 @@ function App() {
     ]);
   }
 
+  function handleEditClass(id) {
+    setIsEdit(true);
+    setClassIdToEdit(id);
+  }
+
+  function toggleIsEdit() {
+    setIsEdit(!isEdit);
+  }
+
+  function handleUpdateEntry(id, updatedEntry) {
+    const index = listOfClasses.findIndex((savedClass) => savedClass.id === id);
+    setListOfClasses([
+      ...listOfClasses.slice(0, index),
+      updatedEntry,
+      ...listOfClasses.slice(index + 1),
+    ]);
+    toggleIsEdit();
+    toastSavedMessage("Class updated!");
+  }
+
   return (
-    <div className="App">
+    <Div100vh className="App">
       <Header />
       <Main
-        onSaveFormInput={onSaveFormInput}
+        handleSaveFormInput={handleSaveFormInput}
         onRemoveClassClick={handleRemoveClass}
         listOfClasses={listOfClasses}
         toggleFavourite={toggleFavourite}
+        toggleIsEdit={toggleIsEdit}
+        handleUpdateEntry={handleUpdateEntry}
+        isEdit={isEdit}
+        classIdToEdit={classIdToEdit}
+        handleEditClass={handleEditClass}
       />
       <Footer />
-    </div>
+    </Div100vh>
   );
 }
 

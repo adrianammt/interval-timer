@@ -4,16 +4,17 @@
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem 1.5rem;
   border-radius: 15px;
   position: relative;
   width: 100%;
   margin-top: 0.5rem;
 }
 
-.PlayClass h2 {
+.PlayClass__title {
   align-self: center;
-  font-weight: 600;
+  font-weight: bold;
+  padding-bottom: 0.5rem;
 }
 
 .PlayClass__controls {
@@ -50,7 +51,8 @@
 }
 
 .PrepTime-line__time--text {
-  font-size: 1rem;
+  font-size: 1.2rem;
+  align-self: center;
 }
 
 .FavIcon--inactive {
@@ -94,4 +96,17 @@
 
 .PlayClassCard__wrapper {
   width: 100%;
+}
+
+.PlayClass__editOptions {
+  color: var(--color-primary);
+  font-size: 2.4rem;
+  position: absolute;
+  bottom: 3px;
+  right: 15px;
+}
+
+.PlayClass__editOptions:hover {
+  color: var(--color-accent);
+  cursor: pointer;
 }

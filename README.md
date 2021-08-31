@@ -1,3 +1,11 @@
+## MYITA
+
+Meditation and Yoga interval timer App (MYITA) is a an interval timer App.
+
+Its's main use is for Meditation and Yoga, but it can be used for any activity that requires an interval timer with different alerts.
+
+You can save your classes/practices settings and have them ready to use. And those that you use the most can be saved in your favourites for easy access.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

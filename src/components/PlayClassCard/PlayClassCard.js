@@ -1,7 +1,8 @@
 import React from "react";
 import "./PlayClassCard.css";
-import { IoPlay, IoStop, IoPause, IoHeart } from "react-icons/io5";
+import { IoPlay, IoStop, IoPause, IoHeart, IoOptions } from "react-icons/io5";
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { useTimer } from "react-use-precision-timer";
 import tibetanBowl from "../../assets/tibetanBowl.mp3";
 import bellChime from "../../assets/bellChime.mp3";
@@ -11,7 +12,11 @@ import forest from "../../assets/forest.mp3";
 import windbell from "../../assets/windbell.mp3";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
-export default function PlayClassCard({ classToPlay, toggleFavourite }) {
+export default function PlayClassCard({
+  classToPlay,
+  toggleFavourite,
+  handleEditClass,
+}) {
   const {
     id,
     name,
@@ -97,14 +102,13 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
   }
 
   function handlePlayClick() {
-    if (!mainTimer.isStarted()) {
+    if (prepTimer.getElapsedRunningTime() === 0) {
       prepTimer.start();
+    } else if (prepTimer.isPaused()) {
+      prepTimer.resume();
     }
-    if (!mainTimer.isStarted()) {
-      if (prepTimer.isPaused()) {
-        prepTimer.resume();
-      }
-    } else {
+
+    if (mainTimer.isStarted()) {
       mainTimer.resume();
       intervalTimer.resume();
     }
@@ -116,6 +120,7 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     intervalTimer.stop();
     backgroundMusicRef.current.pause();
     setFormattedTime("00:00:00");
+    setPrepFormattedTime("00");
     setResetAnimation((prevAnim) => prevAnim + 1);
   }
 
@@ -174,13 +179,16 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
     } else return forest;
   }
 
+  const durationHours = Math.floor(duration / (60 * 60));
+  const durationMin = Math.floor((duration % (60 * 60)) / 60);
+
   return (
     <section className="PlayClass">
       <IoHeart
         className={isFavourite ? "FavIcon--active" : "FavIcon--inactive"}
         onClick={toggleHeartIcon}
       />
-      <h2>{name}</h2>
+      <h2 className="PlayClass__title">{name}</h2>
       <div className="PlayClass__controls">
         <IoPause
           onClick={handlePauseClick}
@@ -207,27 +215,38 @@ export default function PlayClassCard({ classToPlay, toggleFavourite }) {
           }
         />
       </div>
-      <h3>Preparation Time</h3>
-      <div className="PrepTime">
-        <div className="PrepTime-line"></div>
-        <div className="PrepTime-line__time">
-          <p className="PrepTime-line__time--text">0</p>
-          <p className="PrepTime-line__time--text">
-            {prepTime} sec ({prepFormattedTime})
-          </p>
-        </div>
-      </div>
-      <h3>Class</h3>
+      <h3>Preparation Time: {prepTime} sec</h3>
+
+      <p className="PrepTime-line__time--text">{prepFormattedTime}</p>
+      <div className="PrepTime-line"></div>
+      <div className="PrepTime-line__time"></div>
+
+      <h3>
+        Class:{" "}
+        {durationHours !== 0
+          ? `${durationHours} h ${durationMin} min`
+          : `${durationMin} min`}
+      </h3>
       <div className="Circle-wrapper">
         <CountdownCircleTimer
           key={resetAnimation}
           isPlaying={mainTimer.isRunning()}
           duration={duration}
           colors={[["#2b0080", 0.8], ["#2b0080", 0.8], ["#A30000"]]}
+          size={150}
+          strokeWidth={9}
         >
           <p className="Circle-wrapper__text">{formattedTime}</p>
         </CountdownCircleTimer>
       </div>
+      <Link to="/create">
+        <IoOptions
+          className="PlayClass__editOptions"
+          onClick={() => {
+            handleEditClass(id);
+          }}
+        />
+      </Link>
       <audio
         ref={startSoundRef}
         preload="true"
