@@ -1,6 +1,12 @@
 import "./SettingsForm.css";
 import { v4 as uuidv4 } from "uuid";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import tibetanBowl from "../assets/tibetanBowl.mp3";
+import bellChime from "../assets/bellChime.mp3";
+import bigSingingBowl from "../assets/bigSingingBowl.mp3";
+import oceanWaves from "../assets/oceanWaves.mp3";
+import forest from "../assets/forest.mp3";
+import windbell from "../assets/windbell.mp3";
 
 const initialInput = {
   name: "",
@@ -21,6 +27,37 @@ export default function SettingsForm({
   listOfClasses,
 }) {
   const [classInput, setClassInput] = useState(initialInput);
+  const [selectedStartSound, setSelectedStartSound] = useState("none");
+  const [selectedEndSound, setSelectedEndSound] = useState("none");
+  const [selectedIntervalSound, setSelectedIntervalSound] = useState("none");
+  const [selectedBackgroundMusic, setSelectedBackgroundMusic] = useState(
+    "none"
+  );
+
+  const startSoundRef = useRef();
+  const endSoundRef = useRef();
+  const intervalSoundRef = useRef();
+  const backgroundMusicRef = useRef();
+
+  useEffect(() => {
+    startSoundRef.current.pause();
+    startSoundRef.current.play();
+  }, [selectedStartSound]);
+
+  useEffect(() => {
+    endSoundRef.current.pause();
+    endSoundRef.current.play();
+  }, [selectedEndSound]);
+
+  useEffect(() => {
+    intervalSoundRef.current.pause();
+    intervalSoundRef.current.play();
+  }, [selectedIntervalSound]);
+
+  useEffect(() => {
+    backgroundMusicRef.current.pause();
+    backgroundMusicRef.current.play();
+  }, [selectedBackgroundMusic]);
 
   useEffect(() => {
     if (isEdit) {
@@ -86,18 +123,22 @@ export default function SettingsForm({
   function handleOnChangeStartSound(e) {
     const startSound = e.target.value;
     setClassInput({ ...classInput, startSound });
+    setSelectedStartSound(startSound);
   }
   function handleOnChangeEndSound(e) {
     const endSound = e.target.value;
     setClassInput({ ...classInput, endSound });
+    setSelectedEndSound(endSound);
   }
   function handleOnChangeIntervalSound(e) {
     const intervalSound = e.target.value;
     setClassInput({ ...classInput, intervalSound });
+    setSelectedIntervalSound(intervalSound);
   }
   function handleOnChangeBackgroundMusic(e) {
     const backgroundMusic = e.target.value;
     setClassInput({ ...classInput, backgroundMusic });
+    setSelectedBackgroundMusic(backgroundMusic);
   }
 
   const classDuration = classInput.duration;
@@ -119,6 +160,24 @@ export default function SettingsForm({
     (iHours < 10 ? "0" + iHours : iHours) +
     ":" +
     (iMinutes < 10 ? "0" + iMinutes : iMinutes);
+
+  function getSound(chosenSound) {
+    if (chosenSound === "bell") {
+      return bellChime;
+    } else if (chosenSound === "bowl") {
+      return tibetanBowl;
+    } else if (chosenSound === "bigBowl") {
+      return bigSingingBowl;
+    } else if (chosenSound === "windbell") {
+      return windbell;
+    }
+  }
+
+  function backgroundSound() {
+    if (selectedBackgroundMusic === "waves") {
+      return oceanWaves;
+    } else return forest;
+  }
 
   return (
     <>
@@ -200,6 +259,9 @@ export default function SettingsForm({
             id="startSound"
             onChange={handleOnChangeStartSound}
             value={classInput.startSound}
+            onBlur={() => {
+              startSoundRef.current.pause();
+            }}
           >
             <option value="none">None</option>
             <option value="bell">Bell</option>
@@ -218,6 +280,9 @@ export default function SettingsForm({
             id="endSound"
             onChange={handleOnChangeEndSound}
             value={classInput.endSound}
+            onBlur={() => {
+              endSoundRef.current.pause();
+            }}
           >
             <option value="none">None</option>
             <option value="bell">Bell</option>
@@ -236,6 +301,9 @@ export default function SettingsForm({
             id="intervalSound"
             onChange={handleOnChangeIntervalSound}
             value={classInput.intervalSound}
+            onBlur={() => {
+              intervalSoundRef.current.pause();
+            }}
           >
             <option value="none">None</option>
             <option value="bell">Bell</option>
@@ -254,6 +322,9 @@ export default function SettingsForm({
             id="backgroundMusic"
             onChange={handleOnChangeBackgroundMusic}
             value={classInput.backgroundMusic}
+            onBlur={() => {
+              backgroundMusicRef.current.pause();
+            }}
           >
             <option value="none">None</option>
             <option value="waves">Waves</option>
@@ -265,6 +336,31 @@ export default function SettingsForm({
       <button type="submit" className="saveButton" form="settingsForm">
         {isEdit ? "Update Settings" : "Save Class"}
       </button>
+      <audio
+        ref={startSoundRef}
+        preload="true"
+        src={getSound(selectedStartSound)}
+        muted={selectedStartSound === "none" ? true : false}
+      />
+      <audio
+        ref={endSoundRef}
+        preload="true"
+        src={getSound(selectedEndSound)}
+        muted={selectedEndSound === "none" ? true : false}
+      />
+      <audio
+        ref={intervalSoundRef}
+        preload="true"
+        src={getSound(selectedIntervalSound)}
+        muted={selectedIntervalSound === "none" ? true : false}
+      />
+      <audio
+        ref={backgroundMusicRef}
+        preload="true"
+        loop={true}
+        src={backgroundSound()}
+        muted={selectedBackgroundMusic === "none" ? true : false}
+      />
     </>
   );
 }

@@ -110,3 +110,10 @@
   color: var(--color-accent);
   cursor: pointer;
 }
+
+@media (min-width: 600px) {
+  .PlayClass {
+    width: 550px;
+    align-self: center;
+  }
+}
