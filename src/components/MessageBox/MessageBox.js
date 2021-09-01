@@ -15,7 +15,7 @@ export default function NoClassMessageBox({
 
   return (
     <div className="MessageBox">
-      <h2>{message}</h2>
+      <h2 className="MessageBox__title">{message}</h2>
       <Link to={`/${path}`}>
         <Icon icon={icon} className="MessageBox-Icon" />
       </Link>

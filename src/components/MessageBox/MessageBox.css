@@ -23,6 +23,10 @@
   cursor: pointer;
 }
 
+.MessageBox__title {
+  text-align: center;
+}
+
 @media (min-width: 600px) {
   .MessageBox {
     width: 550px;
