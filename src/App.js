@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import Main from "./components/Main";
 import { useEffect, useState } from "react";
 import Div100vh from "react-div-100vh";
-import toastSavedMessage from "./feedbackToUser/toastSavedMessage";
+import toastSavedMessage from "./service/toastSavedMessage";
 
 function App() {
   const savedClasses = JSON.parse(localStorage.getItem("classList")) || [];
