@@ -13,7 +13,11 @@ export default function MyList({ data, handleRemoveClass, toggleFavourite }) {
   return (
     <div className="ClassCard__wrapper">
       {data.length === 0 ? (
-        <MessageBox icon={IoAddCircle} message="Let's add some classes!" />
+        <MessageBox
+          icon={IoAddCircle}
+          path="create"
+          message="Let's add some classes!"
+        />
       ) : (
         data.map((savedClass) => {
           return (

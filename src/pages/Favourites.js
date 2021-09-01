@@ -22,7 +22,11 @@ export default function Favourites({
   return (
     <div className="ClassCard__wrapper">
       {filteredFavourites.length === 0 ? (
-        <MessageBox icon={IoHeart} message="Add your favourite classes!" />
+        <MessageBox
+          icon={IoHeart}
+          path="myList"
+          message="Add your favourite classes!"
+        />
       ) : (
         filteredFavourites.map((filteredClass) => {
           return (
