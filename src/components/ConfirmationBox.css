@@ -1,0 +1,42 @@
+.ConfirmationBox {
+  display: none;
+}
+
+.ConfirmationBox-show {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: var(--color-danger);
+  color: var(--color-text-onDark);
+  width: 16.8rem;
+  border-radius: 15px;
+  padding: 0.5rem;
+  z-index: 5;
+  position: absolute;
+  bottom: 14px;
+  right: 60px;
+  gap: 0.5rem;
+}
+
+.Buttons-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Buttons {
+  border: none;
+  background: none;
+  color: var(--color-text-onDark);
+  font-size: 1.2rem;
+}
+
+.Buttons:hover {
+  font-weight: bolder;
+  font-size: 1.4rem;
+}
+
+.ConfirmationBox__title {
+  font-size: 1.2rem;
+  text-align: center;
+}
