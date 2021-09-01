@@ -5,8 +5,11 @@ export default function Header() {
   return (
     <section className="Header">
       <Switch>
-        <Route path="/create">
+        <Route path="/settings">
           <h2>Class Settings</h2>
+        </Route>
+        <Route path="/create">
+          <h2>Create a Class</h2>
         </Route>
         <Route path="/myList">
           <h2>My Saved Classes</h2>

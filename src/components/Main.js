@@ -3,6 +3,7 @@ import Create from "../pages/Create";
 import MyList from "../pages/MyList";
 import Favourites from "../pages/Favourites";
 import PlayClass from "../pages/PlayClass";
+import EditSettings from "../pages/Settings";
 import "./Main.css";
 import { ToastContainer } from "react-toast";
 
@@ -26,6 +27,9 @@ export default function Main({
             toggleFavourite={toggleFavourite}
             handleEditClass={handleEditClass}
           />
+        </Route>
+        <Route path="/settings">
+          <EditSettings />
         </Route>
         <Route path="/create">
           <Create
