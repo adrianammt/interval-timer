@@ -1,5 +1,5 @@
 import React from "react";
-import NoClassMessageBox from "./NoClassMessageBox";
+import NoClassMessageBox from "./MessageBox";
 
 export default {
   title: "MessageBox",

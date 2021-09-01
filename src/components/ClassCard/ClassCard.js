@@ -1,6 +1,8 @@
 import React from "react";
 import "./ClassCard.css";
+import { useState } from "react";
 import { IoRemoveCircle, IoHeart } from "react-icons/io5";
+import ConfirmationBox from "../ConfirmationBox";
 
 export default function ClassCard({
   classCard,
@@ -9,6 +11,8 @@ export default function ClassCard({
   isFavourite,
   toogleHeartIcon,
 }) {
+  const [isHidden, setIsHidden] = useState(true);
+
   const durationHours = Math.floor(classCard.duration / (60 * 60));
   const durationMin = Math.floor((classCard.duration % (60 * 60)) / 60);
 
@@ -18,6 +22,20 @@ export default function ClassCard({
   function handleToogleHeartOnClick(e) {
     e.stopPropagation();
     toogleHeartIcon(classCard.id);
+  }
+
+  function handleConfirmationBox() {
+    setIsHidden(false);
+  }
+
+  function handleCancelDelete() {
+    setIsHidden(true);
+  }
+
+  function handleConfirmDelete() {
+    onRemoveClassClick(classCard.id);
+    console.log("Class IS Deleted");
+    setIsHidden(true);
   }
 
   return (
@@ -53,8 +71,14 @@ export default function ClassCard({
         className="ClassCard-removeIcon"
         onClick={(e) => {
           e.stopPropagation();
-          onRemoveClassClick(classCard.id);
+          handleConfirmationBox();
         }}
+      />
+      <ConfirmationBox
+        isHidden={isHidden}
+        onCancel={handleCancelDelete}
+        onConfirm={handleConfirmDelete}
+        name={classCard.name}
       />
     </section>
   );

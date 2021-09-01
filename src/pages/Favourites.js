@@ -1,7 +1,8 @@
 import "./Favourites.css";
 import ClassCard from "../components/ClassCard/ClassCard";
 import { useHistory } from "react-router-dom";
-import NoFavouritesMessageBox from "../components/NoFavourites/NoFavouritesMessageBox";
+import MessageBox from "../components/MessageBox/MessageBox";
+import { IoHeart } from "react-icons/io5";
 
 export default function Favourites({
   data,
@@ -21,7 +22,11 @@ export default function Favourites({
   return (
     <div className="ClassCard__wrapper">
       {filteredFavourites.length === 0 ? (
-        <NoFavouritesMessageBox />
+        <MessageBox
+          icon={IoHeart}
+          path="myList"
+          message="Add your favourite classes!"
+        />
       ) : (
         filteredFavourites.map((filteredClass) => {
           return (
