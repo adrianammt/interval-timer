@@ -1,6 +1,7 @@
 import ClassCard from "../components/ClassCard/ClassCard";
+import { IoAddCircle } from "react-icons/io5";
 import { useHistory } from "react-router-dom";
-import NoClassMessageBox from "../components/NoClassBox/NoClassMessageBox";
+import MessageBox from "../components/MessageBox/MessageBox";
 
 export default function MyList({ data, handleRemoveClass, toggleFavourite }) {
   const history = useHistory();
@@ -12,7 +13,7 @@ export default function MyList({ data, handleRemoveClass, toggleFavourite }) {
   return (
     <div className="ClassCard__wrapper">
       {data.length === 0 ? (
-        <NoClassMessageBox />
+        <MessageBox icon={IoAddCircle} message="Let's add some classes!" />
       ) : (
         data.map((savedClass) => {
           return (
