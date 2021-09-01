@@ -1,9 +1,14 @@
 import "./ConfirmationBox.css";
 
-export default function ConfirmationBox({ onCancel, onConfirm, isHide, name }) {
+export default function ConfirmationBox({
+  onCancel,
+  onConfirm,
+  isHidden,
+  name,
+}) {
   return (
     <>
-      <div className={isHide ? "ConfirmationBox" : "ConfirmationBox-show"}>
+      <div className={isHidden ? "ConfirmationBox" : "ConfirmationBox-show"}>
         <p className="ConfirmationBox__title">Do you want to delete {name}?</p>
         <div className="Buttons-wrapper">
           <button

@@ -11,7 +11,7 @@ export default function ClassCard({
   isFavourite,
   toogleHeartIcon,
 }) {
-  const [isHide, setIsHide] = useState(true);
+  const [isHidden, setIsHidden] = useState(true);
 
   const durationHours = Math.floor(classCard.duration / (60 * 60));
   const durationMin = Math.floor((classCard.duration % (60 * 60)) / 60);
@@ -25,17 +25,17 @@ export default function ClassCard({
   }
 
   function handleConfirmationBox() {
-    setIsHide(false);
+    setIsHidden(false);
   }
 
   function handleCancelDelete() {
-    setIsHide(true);
+    setIsHidden(true);
   }
 
   function handleConfirmDelete() {
     onRemoveClassClick(classCard.id);
     console.log("Class IS Deleted");
-    setIsHide(true);
+    setIsHidden(true);
   }
 
   return (
@@ -75,7 +75,7 @@ export default function ClassCard({
         }}
       />
       <ConfirmationBox
-        isHide={isHide}
+        isHidden={isHidden}
         onCancel={handleCancelDelete}
         onConfirm={handleConfirmDelete}
         name={classCard.name}
