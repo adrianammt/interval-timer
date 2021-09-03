@@ -19,7 +19,7 @@ export default function PlayClass() {
     <PlayClassCard
       id={id}
       classToPlay={classToPlay}
-      toggleFavourite={toggleFavourite}
+      toogleHeartIcon={toggleFavourite}
       onEditSettingsPage={handleEditClassSettingsPath}
     />
   );
