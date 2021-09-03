@@ -12,8 +12,7 @@ import forest from "../../assets/forest.mp3";
 import windbell from "../../assets/windbell.mp3";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
-export default function PlayClassCard({ toggleHeartIcon, classToPlay }) {
-  console.log(classToPlay);
+export default function PlayClassCard({ classToPlay, toogleHeartIcon }) {
   const [formattedTime, setFormattedTime] = useState("00:00:00");
   const [prepFormattedTime, setPrepFormattedTime] = useState("00");
   const [resetAnimation, setResetAnimation] = useState(0);
@@ -166,14 +165,18 @@ export default function PlayClassCard({ toggleHeartIcon, classToPlay }) {
   const durationHours = Math.floor(classToPlay.classDuration / (60 * 60));
   const durationMin = Math.floor((classToPlay.classDuration % (60 * 60)) / 60);
   const duration = classToPlay.classDuration;
-  console.log(duration);
+
+  function handleToogleHeartOnClick(e) {
+    e.stopPropagation();
+    toogleHeartIcon(classToPlay.id);
+  }
   return (
     <section className="PlayClass">
       <IoHeart
         className={
           classToPlay.isFavourite ? "FavIcon--active" : "FavIcon--inactive"
         }
-        onClick={toggleHeartIcon}
+        onClick={handleToogleHeartOnClick}
       />
       <h2 className="PlayClass__title">{classToPlay.name}</h2>
       <div className="PlayClass__controls">
