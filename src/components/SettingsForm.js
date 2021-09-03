@@ -22,11 +22,12 @@ export default function SettingsForm({
   buttonName,
   onSubmit,
 }) {
+  const [isFirstLoadDone, setIsFirstLoadDone] = useState(false);
   const [classNameInput, setClassNameInput] = useState(initialClassInput.name);
   const [classDurationInput, setClassDurationInput] = useState(() => {
     const time = new Date(initialClassInput.classDuration * 1000)
       .toISOString()
-      .substr(14, 5);
+      .substr(11, 5);
     return time;
   });
   const [classPrepTimeInput, setClassprepTimeInput] = useState(
@@ -35,7 +36,7 @@ export default function SettingsForm({
   const [classIntervalTimeInput, setClassIntervalTimeInput] = useState(() => {
     const time = new Date(initialClassInput.classIntervalTime * 1000)
       .toISOString()
-      .substr(14, 5);
+      .substr(11, 5);
 
     return time;
   });
@@ -57,25 +58,37 @@ export default function SettingsForm({
   const intervalSoundRef = useRef();
   const backgroundMusicRef = useRef();
 
+  /* eslint-disable  */
+
   useEffect(() => {
-    startSoundRef.current.pause();
-    startSoundRef.current.play();
+    if (isFirstLoadDone) {
+      startSoundRef.current.pause();
+      startSoundRef.current.play();
+    } else setIsFirstLoadDone(true);
   }, [selectedStartSound]);
 
   useEffect(() => {
-    endSoundRef.current.pause();
-    endSoundRef.current.play();
+    if (isFirstLoadDone) {
+      endSoundRef.current.pause();
+      endSoundRef.current.play();
+    }
   }, [selectedEndSound]);
 
   useEffect(() => {
-    intervalSoundRef.current.pause();
-    intervalSoundRef.current.play();
+    if (isFirstLoadDone) {
+      intervalSoundRef.current.pause();
+      intervalSoundRef.current.play();
+    }
   }, [selectedIntervalSound]);
 
   useEffect(() => {
-    backgroundMusicRef.current.pause();
-    backgroundMusicRef.current.play();
+    if (isFirstLoadDone) {
+      backgroundMusicRef.current.pause();
+      backgroundMusicRef.current.play();
+    }
   }, [selectedBackgroundMusic]);
+
+  /* eslint-enable */
 
   function getSound(chosenSound) {
     if (chosenSound === "bell") {
