@@ -1,21 +1,20 @@
 import "./Favourites.css";
 import ClassCard from "../components/ClassCard/ClassCard";
-import { useHistory } from "react-router-dom";
 import MessageBox from "../components/MessageBox/MessageBox";
 import { IoHeart } from "react-icons/io5";
+import useClassList from "../hooks/useClassList";
+import useHistoryPush from "../hooks/useHistoryPush";
 
-export default function Favourites({
-  data,
-  handleRemoveClass,
-  toggleFavourite,
-}) {
-  const history = useHistory();
+export default function Favourites() {
+  const { classList, removeClass, toggleFavourite } = useClassList();
+
+  const goToPath = useHistoryPush("myList");
 
   function handlePlayClass(id) {
-    history.push(`/myList/${id}`);
+    goToPath(id);
   }
 
-  const filteredFavourites = data.filter(
+  const filteredFavourites = classList.filter(
     (savedClass) => savedClass.isFavourite
   );
 
@@ -37,7 +36,7 @@ export default function Favourites({
               name={filteredClass.name}
               duration={filteredClass.duration}
               intervalTime={filteredClass.intervalTime}
-              onRemoveClassClick={handleRemoveClass}
+              onRemoveClassClick={removeClass}
               onPlayClassClick={handlePlayClass}
               toogleHeartIcon={toggleFavourite}
               isFavourite={filteredClass.isFavourite}
