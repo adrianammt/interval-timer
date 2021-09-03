@@ -13,7 +13,7 @@ export default function SettingsForm({
     name: "",
     classDuration: 600,
     prepTime: 5,
-    intervalTime: 120,
+    classIntervalTime: 120,
     startSound: "none",
     endSound: "none",
     intervalSound: "none",
@@ -24,21 +24,19 @@ export default function SettingsForm({
 }) {
   const [classNameInput, setClassNameInput] = useState(initialClassInput.name);
   const [classDurationInput, setClassDurationInput] = useState(() => {
-    const time = new Date(initialClassInput.classDuration * 1000).toISOString();
-    // .substr(14, 5);
-    console.log(time);
+    const time = new Date(initialClassInput.classDuration * 1000)
+      .toISOString()
+      .substr(14, 5);
     return time;
   });
   const [classPrepTimeInput, setClassprepTimeInput] = useState(
     initialClassInput.prepTime
   );
   const [classIntervalTimeInput, setClassIntervalTimeInput] = useState(() => {
-    // let hh = initialClassInput.intervalTime * 1000;
-    // console.log(hh);
-    const time = new Date(initialClassInput.classDuration * 1000)
+    const time = new Date(initialClassInput.classIntervalTime * 1000)
       .toISOString()
       .substr(14, 5);
-    console.log(time);
+
     return time;
   });
   const [selectedStartSound, setSelectedStartSound] = useState(
@@ -103,7 +101,6 @@ export default function SettingsForm({
     const classDuration = getTimeInSeconds(classDurationInput);
 
     const classIntervalTime = getTimeInSeconds(classIntervalTimeInput);
-    console.log(classIntervalTime);
 
     onSubmit({
       name: classNameInput,
