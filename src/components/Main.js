@@ -7,53 +7,25 @@ import EditSettings from "../pages/Settings";
 import "./Main.css";
 import { ToastContainer } from "react-toast";
 
-export default function Main({
-  handleSaveFormInput,
-  listOfClasses,
-  onRemoveClassClick,
-  toggleFavourite,
-  handleEditClass,
-  classIdToEdit,
-  isEdit,
-  handleUpdateEntry,
-}) {
+export default function Main() {
   return (
     <main className="Content">
       <ToastContainer delay={2000} position={"top-center"} />
       <Switch>
         <Route path="/myList/:id">
-          <PlayClass
-            listOfClasses={listOfClasses}
-            toggleFavourite={toggleFavourite}
-            handleEditClass={handleEditClass}
-          />
+          <PlayClass />
         </Route>
-        <Route path="/settings">
+        <Route path="/settings/:id">
           <EditSettings />
         </Route>
         <Route path="/create">
-          <Create
-            handleSaveFormInput={handleSaveFormInput}
-            listOfClasses={listOfClasses}
-            handleEditClass={handleEditClass}
-            classIdToEdit={classIdToEdit}
-            isEdit={isEdit}
-            handleUpdateEntry={handleUpdateEntry}
-          />
+          <Create />
         </Route>
         <Route path="/myList">
-          <MyList
-            data={listOfClasses}
-            handleRemoveClass={onRemoveClassClick}
-            toggleFavourite={toggleFavourite}
-          />
+          <MyList />
         </Route>
         <Route path="/favourites">
-          <Favourites
-            data={listOfClasses}
-            handleRemoveClass={onRemoveClassClick}
-            toggleFavourite={toggleFavourite}
-          />
+          <Favourites />
         </Route>
         <Route path="/">
           <Redirect to="/myList" />
