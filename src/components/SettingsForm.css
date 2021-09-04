@@ -36,7 +36,7 @@
   border: none;
   text-align: right;
   color: var(--color-text-onDark);
-  font-size: 1em;
+  font-size: 1rem;
   padding-right: 0.3rem;
 }
 
@@ -45,6 +45,7 @@
   background: none;
   align-items: right;
   color: var(--color-text-onDark);
+  font-size: 1rem;
 }
 
 input[type="time"]::-webkit-calendar-picker-indicator {
@@ -76,11 +77,16 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   border: none;
   text-align-last: center;
 }
+
+.input-label {
+  font-size: 1rem;
+}
 .sound-select {
   border: none;
   background: none;
   text-align: right;
   color: var(--color-text-onDark);
+  font-size: 1rem;
 }
 
 @media (min-width: 600px) {
