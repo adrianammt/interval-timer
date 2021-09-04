@@ -8,4 +8,5 @@
   --color-text-onlight: var(--color-primary);
   --color-danger: #c40808;
   --color-icon-inactive: #f4f6f7;
+  --color-bg-confirmation: #202020;
 }
