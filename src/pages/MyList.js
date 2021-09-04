@@ -8,7 +8,7 @@ import useHistoryPush from "../hooks/useHistoryPush";
 export default function MyList() {
   const { classList, removeClass, toggleFavourite } = useClassList();
 
-  const goToPath = useHistoryPush("myList");
+  const goToPath = useHistoryPush("playClass");
 
   function handleClassToPlayPath(id) {
     goToPath(id);
