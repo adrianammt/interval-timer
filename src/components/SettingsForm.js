@@ -6,7 +6,7 @@ import bigSingingBowl from "../assets/bigSingingBowl.mp3";
 import oceanWaves from "../assets/oceanWaves.mp3";
 import forest from "../assets/forest.mp3";
 import windbell from "../assets/windbell.mp3";
-import getTimeInSeconds from "../service/durationInSeconds";
+import getTimeInSeconds from "../service/durationStringToSeconds";
 
 export default function SettingsForm({
   initialClassInput = {
