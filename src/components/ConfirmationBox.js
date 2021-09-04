@@ -31,6 +31,11 @@ export default function ConfirmationBox({
           </button>
         </div>
       </div>
+      <div
+        className={
+          isHidden ? "ConfirmationBox__bg" : "ConfirmationBox__bg--show"
+        }
+      ></div>
     </>
   );
 }
