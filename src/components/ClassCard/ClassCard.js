@@ -13,11 +13,13 @@ export default function ClassCard({
 }) {
   const [isHidden, setIsHidden] = useState(true);
 
-  const durationHours = Math.floor(classCard.duration / (60 * 60));
-  const durationMin = Math.floor((classCard.duration % (60 * 60)) / 60);
+  const durationHours = Math.floor(classCard.classDuration / (60 * 60));
+  const durationMin = Math.floor((classCard.classDuration % (60 * 60)) / 60);
 
-  const intervalHours = Math.floor(classCard.intervalTime / (60 * 60));
-  const intervalMin = Math.floor((classCard.intervalTime % (60 * 60)) / 60);
+  const intervalHours = Math.floor(classCard.classIntervalTime / (60 * 60));
+  const intervalMin = Math.floor(
+    (classCard.classIntervalTime % (60 * 60)) / 60
+  );
 
   function handleToogleHeartOnClick(e) {
     e.stopPropagation();
@@ -34,7 +36,6 @@ export default function ClassCard({
 
   function handleConfirmDelete() {
     onRemoveClassClick(classCard.id);
-    console.log("Class IS Deleted");
     setIsHidden(true);
   }
 

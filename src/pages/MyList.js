@@ -1,25 +1,29 @@
 import ClassCard from "../components/ClassCard/ClassCard";
 import { IoAddCircle } from "react-icons/io5";
-import { useHistory } from "react-router-dom";
+
 import MessageBox from "../components/MessageBox/MessageBox";
+import useClassList from "../hooks/useClassList";
+import useHistoryPush from "../hooks/useHistoryPush";
 
-export default function MyList({ data, handleRemoveClass, toggleFavourite }) {
-  const history = useHistory();
+export default function MyList() {
+  const { classList, removeClass, toggleFavourite } = useClassList();
 
-  function handlePlayClass(id) {
-    history.push(`/myList/${id}`);
+  const goToPath = useHistoryPush("playClass");
+
+  function handleClassToPlayPath(id) {
+    goToPath(id);
   }
 
   return (
     <div className="ClassCard__wrapper">
-      {data.length === 0 ? (
+      {classList.length === 0 ? (
         <MessageBox
           icon={IoAddCircle}
           path="create"
           message="Let's add some classes!"
         />
       ) : (
-        data.map((savedClass) => {
+        classList.map((savedClass) => {
           return (
             <ClassCard
               classCard={savedClass}
@@ -28,8 +32,8 @@ export default function MyList({ data, handleRemoveClass, toggleFavourite }) {
               name={savedClass.name}
               duration={savedClass.duration}
               intervalTime={savedClass.intervalTime}
-              onRemoveClassClick={handleRemoveClass}
-              onPlayClassClick={handlePlayClass}
+              onRemoveClassClick={removeClass}
+              onPlayClassClick={handleClassToPlayPath}
               toogleHeartIcon={toggleFavourite}
               isFavourite={savedClass.isFavourite}
             />

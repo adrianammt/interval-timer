@@ -12,23 +12,7 @@ import forest from "../../assets/forest.mp3";
 import windbell from "../../assets/windbell.mp3";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
-export default function PlayClassCard({
-  classToPlay,
-  toggleFavourite,
-  handleEditClass,
-}) {
-  const {
-    id,
-    name,
-    prepTime,
-    duration,
-    intervalTime,
-    startSound,
-    endSound,
-    intervalSound,
-    backgroundMusic,
-    isFavourite,
-  } = classToPlay;
+export default function PlayClassCard({ classToPlay, toogleHeartIcon }) {
   const [formattedTime, setFormattedTime] = useState("00:00:00");
   const [prepFormattedTime, setPrepFormattedTime] = useState("00");
   const [resetAnimation, setResetAnimation] = useState(0);
@@ -43,7 +27,7 @@ export default function PlayClassCard({
     delay: 1000,
     callback() {
       setPrepFormattedTime(getPrepFormattedTime());
-      if (getPrepTime().total >= prepTime) {
+      if (getPrepTime().total >= classToPlay.prepTime) {
         prepTimer.stop();
         mainTimer.start();
         intervalTimer.start();
@@ -65,11 +49,14 @@ export default function PlayClassCard({
         }
       }
 
-      if (getTime().total >= duration - intervalTime) {
+      if (
+        getTime().total >=
+        classToPlay.classDuration - classToPlay.classIntervalTime
+      ) {
         intervalTimer.stop();
       }
 
-      if (getTime().total >= duration) {
+      if (getTime().total >= classToPlay.classDuration) {
         mainTimer.stop();
         backgroundMusicRef.current.pause();
         endSoundRef.current.play();
@@ -79,17 +66,13 @@ export default function PlayClassCard({
 
   const intervalTimer = useTimer({
     fireImmediately: false,
-    delay: intervalTime * 1000,
+    delay: classToPlay.classIntervalTime * 1000,
     callback() {
       if (intervalTimer.isRunning()) {
         intervalSoundRef.current.play();
       }
     },
   });
-
-  function toggleHeartIcon() {
-    toggleFavourite(id);
-  }
 
   function handlePauseClick() {
     if (prepTimer.isRunning()) {
@@ -174,21 +157,28 @@ export default function PlayClassCard({
   }
 
   function backgroundSound() {
-    if (backgroundMusic === "waves") {
+    if (classToPlay.backgroundMusic === "waves") {
       return oceanWaves;
     } else return forest;
   }
 
-  const durationHours = Math.floor(duration / (60 * 60));
-  const durationMin = Math.floor((duration % (60 * 60)) / 60);
+  const durationHours = Math.floor(classToPlay.classDuration / (60 * 60));
+  const durationMin = Math.floor((classToPlay.classDuration % (60 * 60)) / 60);
+  const duration = classToPlay.classDuration;
 
+  function handleToogleHeartOnClick(e) {
+    e.stopPropagation();
+    toogleHeartIcon(classToPlay.id);
+  }
   return (
     <section className="PlayClass">
       <IoHeart
-        className={isFavourite ? "FavIcon--active" : "FavIcon--inactive"}
-        onClick={toggleHeartIcon}
+        className={
+          classToPlay.isFavourite ? "FavIcon--active" : "FavIcon--inactive"
+        }
+        onClick={handleToogleHeartOnClick}
       />
-      <h2 className="PlayClass__title">{name}</h2>
+      <h2 className="PlayClass__title">{classToPlay.name}</h2>
       <div className="PlayClass__controls">
         <IoPause
           onClick={handlePauseClick}
@@ -215,14 +205,14 @@ export default function PlayClassCard({
           }
         />
       </div>
-      <h3>Preparation Time: {prepTime} sec</h3>
+      <h3>Preparation Time: {classToPlay.prepTime} sec</h3>
 
       <p className="PrepTime-line__time--text">{prepFormattedTime}</p>
       <div className="PrepTime-line"></div>
       <div className="PrepTime-line__time"></div>
 
       <h3>
-        Class:{" "}
+        Class:&nbsp;
         {durationHours !== 0
           ? `${durationHours} h ${durationMin} min`
           : `${durationMin} min`}
@@ -239,38 +229,33 @@ export default function PlayClassCard({
           <p className="Circle-wrapper__text">{formattedTime}</p>
         </CountdownCircleTimer>
       </div>
-      <Link to="/create">
-        <IoOptions
-          className="PlayClass__editOptions"
-          onClick={() => {
-            handleEditClass(id);
-          }}
-        />
+      <Link to={`/settings/${classToPlay.id}`}>
+        <IoOptions className="PlayClass__editOptions" />
       </Link>
       <audio
         ref={startSoundRef}
         preload="true"
-        src={getSound(startSound)}
-        muted={startSound === "none" ? true : false}
+        src={getSound(classToPlay.startSound)}
+        muted={classToPlay.startSound === "none" ? true : false}
       />
       <audio
         ref={endSoundRef}
         preload="true"
-        src={getSound(endSound)}
-        muted={endSound === "none" ? true : false}
+        src={getSound(classToPlay.endSound)}
+        muted={classToPlay.endSound === "none" ? true : false}
       />
       <audio
         ref={intervalSoundRef}
         preload="true"
-        src={getSound(intervalSound)}
-        muted={intervalSound === "none" ? true : false}
+        src={getSound(classToPlay.intervalSound)}
+        muted={classToPlay.intervalSound === "none" ? true : false}
       />
       <audio
         ref={backgroundMusicRef}
         preload="true"
         loop={true}
         src={backgroundSound()}
-        muted={backgroundMusic === "none" ? true : false}
+        muted={classToPlay.backgroundMusic === "none" ? true : false}
       />
     </section>
   );
