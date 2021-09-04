@@ -11,6 +11,9 @@ import oceanWaves from "../../assets/oceanWaves.mp3";
 import forest from "../../assets/forest.mp3";
 import windbell from "../../assets/windbell.mp3";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import totalSecondsToHours from "../../service/durationSecondsToHours";
+import totalSecondsToMin from "../../service/durationSecondsToMin";
+import numberToString from "../../service/numberToString";
 
 export default function PlayClassCard({ classToPlay, toogleHeartIcon }) {
   const [formattedTime, setFormattedTime] = useState("00:00:00");
@@ -120,7 +123,7 @@ export default function PlayClassCard({ classToPlay, toogleHeartIcon }) {
 
   function getPrepFormattedTime() {
     const { seconds } = getPrepTime();
-    const secondsString = seconds.toString().padStart(2, "00");
+    const secondsString = numberToString(seconds);
     return `${secondsString}`;
   }
 
@@ -140,9 +143,9 @@ export default function PlayClassCard({ classToPlay, toogleHeartIcon }) {
 
   function getFormattedTime() {
     const time = getTime();
-    const hoursString = time.hours.toString().padStart(2, "00");
-    const minsString = time.minutes.toString().padStart(2, "00");
-    const secondsString = time.seconds.toString().padStart(2, "00");
+    const hoursString = numberToString(time.hours);
+    const minsString = numberToString(time.minutes);
+    const secondsString = numberToString(time.seconds);
     return `${hoursString}:${minsString}:${secondsString}`;
   }
 
@@ -162,9 +165,11 @@ export default function PlayClassCard({ classToPlay, toogleHeartIcon }) {
     } else return forest;
   }
 
-  const durationHours = Math.floor(classToPlay.classDuration / (60 * 60));
-  const durationMin = Math.floor((classToPlay.classDuration % (60 * 60)) / 60);
-  const duration = classToPlay.classDuration;
+  const durationHours = totalSecondsToHours(classToPlay);
+  const durationMin = totalSecondsToMin(classToPlay);
+
+  const hoursString = numberToString(durationHours);
+  const minsString = numberToString(durationMin);
 
   function handleToogleHeartOnClick(e) {
     e.stopPropagation();
@@ -205,26 +210,28 @@ export default function PlayClassCard({ classToPlay, toogleHeartIcon }) {
           }
         />
       </div>
-      <h3>Preparation Time: {classToPlay.prepTime} sec</h3>
+      <h3 className="PlayClass__subtitle">
+        Preparation Time: {classToPlay.prepTime} sec
+      </h3>
 
       <p className="PrepTime-line__time--text">{prepFormattedTime}</p>
       <div className="PrepTime-line"></div>
       <div className="PrepTime-line__time"></div>
 
-      <h3>
+      <h3 className="PlayClass__subtitle">
         Class:&nbsp;
         {durationHours !== 0
-          ? `${durationHours} h ${durationMin} min`
-          : `${durationMin} min`}
+          ? `${hoursString} h ${minsString} min`
+          : `${minsString} min`}
       </h3>
       <div className="Circle-wrapper">
         <CountdownCircleTimer
           key={resetAnimation}
           isPlaying={mainTimer.isRunning()}
-          duration={duration}
+          duration={classToPlay.classDuration}
           colors={[["#2b0080", 0.8], ["#2b0080", 0.8], ["#A30000"]]}
-          size={150}
-          strokeWidth={9}
+          size={160}
+          strokeWidth={10}
         >
           <p className="Circle-wrapper__text">{formattedTime}</p>
         </CountdownCircleTimer>

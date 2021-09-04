@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./Footer.css";
-import { IoTimerOutline, IoAddCircle, IoHeart } from "react-icons/io5";
+import { IoTimer, IoAddCircle, IoHeart } from "react-icons/io5";
 
 export default function Footer() {
   return (
@@ -17,7 +17,7 @@ export default function Footer() {
         className="NavIcon"
         activeClassName="NavIcon--active"
       >
-        <IoTimerOutline alt="My List icon" />
+        <IoTimer alt="My List icon" />
       </NavLink>
       <NavLink
         to="/favourites"

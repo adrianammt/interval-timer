@@ -1,9 +1,9 @@
 .ClassCard__wrapper {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.2rem;
   width: 100%;
-  margin-top: 0.5rem;
+  margin-top: 0.2rem;
 }
 
 .ClassCard {
@@ -28,35 +28,22 @@
 .ClassCard__title {
   grid-column-start: 1;
   grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
+  font-size: 1.5rem;
 }
 
-.ClassCard__duration {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 3;
+.ClassCard__contentText {
+  font-size: 1rem;
 }
 
 .ClassCard__duration--value {
-  grid-column-start: 2;
   grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
 }
 
 .ClassCard__intervals {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 3;
   grid-row-end: 4;
 }
 
 .ClassCard__intervals--value {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 3;
   grid-row-end: 4;
 }
 

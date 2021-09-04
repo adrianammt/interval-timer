@@ -14,12 +14,12 @@
 .MessageBox-Icon {
   font-size: 3.3rem;
   color: var(--color-accent);
+  transition: all 0.05s ease-in-out;
 }
 
 .MessageBox-Icon:hover,
 .MessageBox-Icon:active {
   color: var(--color-accent-onAction);
-  transition: 1s ease-in-out;
   cursor: pointer;
 }
 

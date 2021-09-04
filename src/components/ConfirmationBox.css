@@ -14,9 +14,27 @@
   padding: 0.5rem;
   z-index: 5;
   position: absolute;
-  bottom: 14px;
+  top: 10px;
   right: 60px;
   gap: 0.5rem;
+}
+
+.ConfirmationBox__bg {
+  display: none;
+}
+
+.ConfirmationBox__bg--show {
+  display: flex;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg-confirmation);
+  opacity: 0.55;
+  overflow: hidden;
+  z-index: 2;
+  cursor: not-allowed;
 }
 
 .Buttons-wrapper {
@@ -29,6 +47,7 @@
   background: none;
   color: var(--color-text-onDark);
   font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .Buttons:hover {
@@ -39,4 +58,8 @@
 .ConfirmationBox__title {
   font-size: 1.2rem;
   text-align: center;
+}
+
+.ConfirmationBox__title--name {
+  font-weight: bold;
 }
