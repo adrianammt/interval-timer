@@ -46,21 +46,29 @@
   align-items: right;
   color: var(--color-text-onDark);
 }
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
 .saveButton {
   align-self: center;
   border: none;
   background-color: var(--color-accent);
   color: var(--color-text-onDark);
   border-radius: 15px;
-  padding: 0.5em 2em;
+  padding: 0.7em 2em;
   font-weight: 600;
   font-size: 1em;
   margin-top: 1.5em;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
 }
 
 .saveButton:hover,
 .saveButton:active {
   background-color: var(--color-accent-onAction);
+  font-size: 1.05rem;
 }
 
 .option {
