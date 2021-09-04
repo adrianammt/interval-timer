@@ -12,7 +12,7 @@ export default function Main() {
     <main className="Content">
       <ToastContainer delay={2000} position={"top-center"} />
       <Switch>
-        <Route path="/myList/:id">
+        <Route path="/playClass/:id">
           <PlayClass />
         </Route>
         <Route path="/settings/:id">
