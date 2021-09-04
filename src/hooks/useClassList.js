@@ -28,6 +28,7 @@ export default function useClassList() {
         return {
           id,
           ...updatedClass,
+          isFavourite: savedClass.isFavourite,
         };
       }
 
