@@ -28,7 +28,7 @@
 }
 
 .PlayClass__controls--inActive {
-  color: var(--color-icon-inactive);
+  color: transparent;
   stroke: var(--color-primary);
   stroke-width: 20;
   cursor: pointer;
@@ -111,7 +111,7 @@
 }
 
 .PlayClass__editOptions:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-onAction);
 }
 
 @media (min-width: 600px) {
