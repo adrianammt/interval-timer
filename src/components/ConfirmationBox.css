@@ -34,6 +34,7 @@
   opacity: 0.55;
   overflow: hidden;
   z-index: 2;
+  cursor: not-allowed;
 }
 
 .Buttons-wrapper {
@@ -46,6 +47,7 @@
   background: none;
   color: var(--color-text-onDark);
   font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .Buttons:hover {
