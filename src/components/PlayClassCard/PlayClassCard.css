@@ -4,17 +4,21 @@
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  padding: 1.5rem 1.5rem;
+  padding: 1.2rem;
   border-radius: 15px;
   position: relative;
   width: 100%;
-  margin-top: 0.5rem;
+  margin-top: 0.2rem;
 }
 
 .PlayClass__title {
   align-self: center;
   font-weight: bold;
   padding-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+.PlayClass__subtitle {
+  font-size: 1rem;
 }
 
 .PlayClass__controls {
@@ -27,19 +31,18 @@
   color: var(--color-icon-inactive);
   stroke: var(--color-primary);
   stroke-width: 20;
+  cursor: pointer;
 }
 
 .PlayClass__controls--active {
   color: var(--color-primary);
-}
-
-.PlayClass__controls--active:hover {
   cursor: pointer;
 }
 
 .PrepTime-line {
   height: 0.5rem;
   background-color: var(--color-primary);
+  border-radius: 0.15px;
 }
 
 .PrepTime-line__time {
@@ -91,7 +94,7 @@
 
 .Circle-wrapper__text {
   align-self: center;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .PlayClassCard__wrapper {
@@ -102,13 +105,13 @@
   color: var(--color-primary);
   font-size: 2.4rem;
   position: absolute;
-  bottom: 3px;
+  bottom: 10px;
   right: 15px;
+  cursor: pointer;
 }
 
 .PlayClass__editOptions:hover {
   color: var(--color-accent);
-  cursor: pointer;
 }
 
 @media (min-width: 600px) {

@@ -1,9 +1,9 @@
 .ClassCard__wrapper {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.2rem;
   width: 100%;
-  margin-top: 0.5rem;
+  margin-top: 0.2rem;
 }
 
 .ClassCard {
@@ -30,6 +30,11 @@
   grid-column-end: 4;
   grid-row-start: 1;
   grid-row-end: 2;
+  font-size: 1.5rem;
+}
+
+.ClassCard__contentText {
+  font-size: 1rem;
 }
 
 .ClassCard__duration {
