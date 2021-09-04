@@ -6,13 +6,16 @@ export default function Header() {
     <section className="Header">
       <Switch>
         <Route path="/settings">
-          <h2>Class Settings</h2>
+          <h2>Update Class Settings</h2>
         </Route>
         <Route path="/create">
           <h2>Create a Class</h2>
         </Route>
         <Route path="/myList">
           <h2>My Saved Classes</h2>
+        </Route>
+        <Route path="/playClass">
+          <h2>Play Class</h2>
         </Route>
         <Route path="/favourites">
           <h2>My Favourite Classes</h2>
