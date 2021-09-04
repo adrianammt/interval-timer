@@ -9,7 +9,10 @@ export default function ConfirmationBox({
   return (
     <>
       <div className={isHidden ? "ConfirmationBox" : "ConfirmationBox-show"}>
-        <p className="ConfirmationBox__title">Do you want to delete {name}?</p>
+        <p className="ConfirmationBox__title">
+          Do you really want to delete
+          <span className="ConfirmationBox__title--name">{name}</span>?
+        </p>
         <div className="Buttons-wrapper">
           <button
             onClick={(e) => {
