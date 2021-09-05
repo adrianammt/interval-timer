@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { ReactComponent as Logo } from "../assets/images/logoAFL.svg";
 import "./Welcome.css";
