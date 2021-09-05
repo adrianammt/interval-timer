@@ -3,7 +3,6 @@
   flex-direction: column;
   gap: 2rem;
   margin-top: 30%;
-  transition: all 1.5s ease-out;
 }
 
 .welcomeMessage__text {
