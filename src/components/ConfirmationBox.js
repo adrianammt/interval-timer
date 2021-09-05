@@ -10,7 +10,7 @@ export default function ConfirmationBox({
     <>
       <div className={isHidden ? "ConfirmationBox" : "ConfirmationBox-show"}>
         <p className="ConfirmationBox__title">
-          Do you really want to delete
+          Do you really want to delete&nbsp;
           <span className="ConfirmationBox__title--name">{name}</span>?
         </p>
         <div className="Buttons-wrapper">
