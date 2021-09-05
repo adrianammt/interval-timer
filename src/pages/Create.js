@@ -9,5 +9,5 @@ export default function Create() {
     addClass(savedClass);
   }
 
-  return <SettingsForm onSubmit={handleClassSubmit} buttonName="Save Class" />;
+  return <SettingsForm onSubmit={handleClassSubmit} buttonName="Save" />;
 }

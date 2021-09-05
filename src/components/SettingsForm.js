@@ -125,6 +125,25 @@ export default function SettingsForm({
       intervalSound: selectedIntervalSound,
       backgroundMusic: selectedBackgroundMusic,
     });
+    setClassNameInput(initialClassInput.name);
+    setClassDurationInput(() => {
+      const time = new Date(initialClassInput.classDuration * 1000)
+        .toISOString()
+        .substr(11, 5);
+      return time;
+    });
+    setClassprepTimeInput(initialClassInput.prepTime);
+    setClassIntervalTimeInput(() => {
+      const time = new Date(initialClassInput.classIntervalTime * 1000)
+        .toISOString()
+        .substr(11, 5);
+
+      return time;
+    });
+    setSelectedStartSound("none");
+    setSelectedEndSound("none");
+    setSelectedIntervalSound("none");
+    setSelectedBackgroundMusic("none");
   }
 
   return (

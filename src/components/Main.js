@@ -4,6 +4,7 @@ import MyList from "../pages/MyList";
 import Favourites from "../pages/Favourites";
 import PlayClass from "../pages/PlayClass";
 import EditSettings from "../pages/Settings";
+import Welcome from "../pages/Welcome";
 import "./Main.css";
 import { ToastContainer } from "react-toast";
 
@@ -18,6 +19,9 @@ export default function Main() {
         <Route path="/settings/:id">
           <EditSettings />
         </Route>
+        <Route path="/welcome">
+          <Welcome />
+        </Route>
         <Route path="/create">
           <Create />
         </Route>
@@ -28,7 +32,7 @@ export default function Main() {
           <Favourites />
         </Route>
         <Route path="/">
-          <Redirect to="/myList" />
+          <Redirect to="/welcome" />
         </Route>
       </Switch>
     </main>

@@ -1,0 +1,36 @@
+.welcomeMessage__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 30%;
+}
+
+.welcomeMessage__text {
+  color: var(--color-text-onDark);
+  font-size: 1.5rem;
+  text-align: center;
+  z-index: 2;
+}
+
+.welcomeMessage__logo {
+  align-self: center;
+  height: 8rem;
+  width: 8rem;
+  z-index: 2;
+}
+
+.welcomeMessage__logo path {
+  fill: var(--color-text-onDark);
+}
+
+.welcomeMessage__bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: url(../../src/assets/images/bgAFL.png);
+  background-size: cover;
+  background-position: right top;
+}
